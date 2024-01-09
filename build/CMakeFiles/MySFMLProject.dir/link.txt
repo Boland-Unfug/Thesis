@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\MySFMLProject.dir/objects.a
+C:\Users\boogl\.vscode-insiders\Projects\mingw64\bin\llvm-ar.exe qc CMakeFiles\MySFMLProject.dir/objects.a @CMakeFiles\MySFMLProject.dir\objects1.rsp
+C:\Users\boogl\.vscode-insiders\Projects\mingw64\bin\clang++.exe -g -Wl,--whole-archive CMakeFiles\MySFMLProject.dir/objects.a -Wl,--no-whole-archive -o MySFMLProject.exe -Wl,--out-implib,libMySFMLProject.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\MySFMLProject.dir\linkLibs.rsp
