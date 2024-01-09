@@ -93,6 +93,7 @@ MySFMLProject_EXTERNAL_OBJECTS =
 MySFMLProject.exe: CMakeFiles/MySFMLProject.dir/main.cpp.obj
 MySFMLProject.exe: CMakeFiles/MySFMLProject.dir/build.make
 MySFMLProject.exe: C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/debug/lib/libsfml-graphics-d.a
+MySFMLProject.exe: C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/debug/lib/libbox2d.a
 MySFMLProject.exe: C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/debug/lib/libsfml-window-d.a
 MySFMLProject.exe: C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/debug/lib/libsfml-system-d.a
 MySFMLProject.exe: CMakeFiles/MySFMLProject.dir/linkLibs.rsp

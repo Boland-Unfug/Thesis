@@ -15,3 +15,4 @@ find_package(Box2D CONFIG REQUIRED)
 # If the SFML was found, link the libraries to your executable
 add_executable(MySFMLProject main.cpp)
 target_link_libraries(MySFMLProject PRIVATE sfml-system sfml-window sfml-graphics)
+target_link_libraries(MySFMLProject PRIVATE box2d::box2d)
