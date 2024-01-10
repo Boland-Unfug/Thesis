@@ -108,13 +108,37 @@ int main()
     body->CreateFixture(&fixtureDef);
 
     // Apply right force
-    b2Vec2 impulse(10.0f, 10.0f);
+    b2Vec2 impulse(10.0f, 5.0f);
     body->ApplyLinearImpulse(impulse, body->GetWorldCenter(), true);
 
     // SFML shape for the box
     sf::CircleShape box(30.f);
     box.setFillColor(sf::Color::Red);
     box.setOrigin(30.f, 30.f);
+
+    // Create another dynamic body
+    b2BodyDef bodyDef2;
+    bodyDef2.type = b2_dynamicBody;
+    bodyDef2.position.Set(400.0f / SCALE, 100.0f / SCALE);
+    b2Body* body2 = world.CreateBody(&bodyDef2);
+    b2CircleShape dynamicCircle2;
+    dynamicCircle2.m_radius = 30.0f / SCALE;
+    b2FixtureDef fixtureDef2;
+    fixtureDef2.shape = &dynamicCircle2;
+    fixtureDef2.density = 1.0f;
+    fixtureDef2.friction = 0.0f;
+    fixtureDef2.restitution = 0.9f;
+    body2->CreateFixture(&fixtureDef2);
+
+    // Apply left force
+    b2Vec2 impulse2(10.0f, 10.0f);
+    body2->ApplyLinearImpulse(impulse2, body2->GetWorldCenter(), true);
+
+    // SFML shape for the box
+    sf::CircleShape box2(30.f);
+    box2.setFillColor(sf::Color::Blue);
+    box2.setOrigin(30.f, 30.f);
+
 
     
 
@@ -143,6 +167,7 @@ int main()
         // Draw ground and box
         window.draw(ground);
         window.draw(box);
+        window.draw(box2);
         window.draw(ceiling);
         window.draw(left_wall);
         window.draw(right_wall);
