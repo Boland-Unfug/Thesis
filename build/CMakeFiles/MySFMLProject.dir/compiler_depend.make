@@ -28,7 +28,6 @@ CMakeFiles/MySFMLProject.dir/main.cpp.obj: C:/Users/boogl/.vscode-insiders/Proje
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/hash_bytes.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/invoke.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/ios_base.h \
-  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/istream.tcc \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/locale_classes.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/locale_classes.tcc \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/locale_conv.h \
@@ -101,8 +100,6 @@ CMakeFiles/MySFMLProject.dir/main.cpp.obj: C:/Users/boogl/.vscode-insiders/Proje
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/initializer_list \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/ios \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/iosfwd \
-  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/iostream \
-  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/istream \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/iterator \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/limits \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/locale \
@@ -434,8 +431,6 @@ C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/functio
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/hash_bytes.h:
 
-C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/istream.tcc:
-
 C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/Graphics/Glsl.hpp:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/locale_classes.h:
@@ -480,6 +475,12 @@ C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/inclu
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/ostream_insert.h:
 
+C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/Window/Vulkan.hpp:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/x86_64-w64-mingw32/include/process.h:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_tempbuf.h:
+
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/predefined_ops.h:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/exception:
@@ -509,12 +510,6 @@ C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_ite
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_heap.h:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_pair.h:
-
-C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/Window/Vulkan.hpp:
-
-C:/Users/boogl/.vscode-insiders/Projects/mingw64/x86_64-w64-mingw32/include/process.h:
-
-C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_tempbuf.h:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/ext/atomicity.h:
 
@@ -609,10 +604,6 @@ C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/ext/string_c
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/initializer_list:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/iosfwd:
-
-C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/iostream:
-
-C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/istream:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/iterator:
 
