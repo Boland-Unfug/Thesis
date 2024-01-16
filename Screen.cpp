@@ -1,5 +1,6 @@
 #include "Screen.h"
 
+
 Screen::Screen(float world_width, float world_height, const std::string &title) 
     : window(sf::VideoMode(world_width, world_height), title), world(gravity) {
 
@@ -31,14 +32,11 @@ void Screen::createWall(const b2Vec2& position, const b2Vec2& size) {
     wall->CreateFixture(&box, 0.0f); // Zero density makes it static
 }
 
-void Screen::run() {
-
-    
-
+void Screen::run(std::vector<Agent> agents) {
     while (window.isOpen()) {
         handleEvents();
-        update();
-        render();
+        update(agents);
+        render(agents);
     }
 }
 
@@ -50,11 +48,12 @@ void Screen::handleEvents() {
     }
 }
 
-void Screen::update() {
+void Screen::update(std::vector<Agent> agents) {
     // Update the Box2D world and other elements
+    world.Step(1 / frameRate, 8, 3);
 }
 
-void Screen::render() {
+void Screen::render(std::vector<Agent> agents) {
     window.clear();
     // Draw elements here
     window.draw(world_body);
@@ -79,6 +78,11 @@ void Screen::render() {
     rightWall.setPosition(world_width - wallThickness, 0);
     rightWall.setFillColor(sf::Color::Yellow);
     window.draw(rightWall);
+
+    // Draw the agents
+    for (Agent agent : agents) {
+        agent.drawAgent(window);
+    }
 
     window.display();
 }

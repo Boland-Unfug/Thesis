@@ -8,7 +8,7 @@ class Screen {
 public:
     Screen(float world_width, float world_height, const std::string &title);
     void createWall(const b2Vec2& position, const b2Vec2& size);
-    void run(); // Main loop for the screen
+    void run(std::vector<Agent>); // Main loop for the screen
 
     //Getters
     float getWorldWidth();
@@ -43,8 +43,8 @@ private:
 
     // Helper methods
     void handleEvents();
-    void update();
-    void render();
+    void update(std::vector<Agent>);
+    void render(std::vector<Agent>);
 
 
 

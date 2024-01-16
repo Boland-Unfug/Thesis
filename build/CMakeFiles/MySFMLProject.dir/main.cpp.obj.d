@@ -310,4 +310,7 @@ CMakeFiles/MySFMLProject.dir/main.cpp.obj: \
   C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/Agent.cpp \
   C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/Agent.h \
   C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/Screen.cpp \
-  C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/Screen.h
+  C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/Screen.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/iostream \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/istream \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/istream.tcc
