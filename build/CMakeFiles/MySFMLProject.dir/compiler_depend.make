@@ -4,6 +4,10 @@
 CMakeFiles/MySFMLProject.dir/main.cpp.obj: C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/main.cpp \
   C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/Agent.cpp \
   C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/Agent.h \
+  C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/Game.cpp \
+  C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/Game.h \
+  C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/GameTactic.h \
+  C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/GameTactics.h \
   C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/Screen.cpp \
   C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/Screen.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/algorithm \
@@ -324,25 +328,15 @@ C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/inclu
 
 C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/main.cpp:
 
+C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/GameTactic.h:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/allocator.h:
+
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/predefined_ops.h:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/x86_64-w64-mingw32/include/_mingw.h:
 
 C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/Agent.cpp:
-
-C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/System/String.hpp:
-
-C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/string_view:
-
-C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/invoke.h:
-
-C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bit:
-
-C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/backward/binders.h:
-
-C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_iterator.h:
-
-C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_heap.h:
 
 C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/box2d/b2_revolute_joint.h:
 
@@ -350,9 +344,19 @@ C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-m
 
 C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/Agent.h:
 
-C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/Window/Event.hpp:
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/x86_64-w64-mingw32/include/pthread_time.h:
 
-C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/algorithm:
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/ext/aligned_buffer.h:
+
+C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/Game.cpp:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/system_error:
+
+C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/Game.h:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/cpp_type_traits.h:
+
+C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/GameTactics.h:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/vector:
 
@@ -365,6 +369,20 @@ C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/inclu
 C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/box2d/b2_broad_phase.h:
 
 C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/Screen.h:
+
+C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/Window/Event.hpp:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/algorithm:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/backward/binders.h:
+
+C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/System/String.hpp:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/string_view:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/invoke.h:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bit:
 
 C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/System/MemoryInputStream.hpp:
 
@@ -382,8 +400,6 @@ C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/cwchar:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/alloc_traits.h:
 
-C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/allocator.h:
-
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/pstl/execution_defs.h:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/basic_ios.h:
@@ -397,8 +413,6 @@ C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/ios:
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/cstdlib:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/basic_string.h:
-
-C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_iterator_base_funcs.h:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/memoryfwd.h:
 
@@ -429,8 +443,6 @@ C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/ios_bas
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/x86_64-w64-mingw32/include/sys/types.h:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/concept_check.h:
-
-C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/cpp_type_traits.h:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_construct.h:
 
@@ -510,8 +522,6 @@ C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/specfun
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/range_access.h:
 
-C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_function.h:
-
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/std_abs.h:
 
 C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/Window/Touch.hpp:
@@ -521,6 +531,14 @@ C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_alg
 C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/System.hpp:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_algobase.h:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_function.h:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_heap.h:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_iterator.h:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_iterator_base_funcs.h:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/tr1/modified_bessel_func.tcc:
 
@@ -618,10 +636,6 @@ C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/inclu
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/debug/debug.h:
 
-C:/Users/boogl/.vscode-insiders/Projects/mingw64/x86_64-w64-mingw32/include/pthread_time.h:
-
-C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/ext/aligned_buffer.h:
-
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/ext/alloc_traits.h:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/ext/numeric_traits.h:
@@ -665,8 +679,6 @@ C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/stdlib.h:
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/streambuf:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/string:
-
-C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/system_error:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/tr1/bessel_function.tcc:
 
