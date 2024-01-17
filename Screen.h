@@ -37,7 +37,7 @@ private:
     float world_width = 800.f;
     float world_height = 800.f;
     const std::string title = "Box2D Test";
-    float frameRate = 100.f;
+    float frameRate = 244.f;
     float wallThickness = 20.f;
     
 

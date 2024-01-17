@@ -20,6 +20,7 @@ public:
     void setDensity(float density);
     void setFriction(float friction);
     void setRestitution(float restitution);
+    void setScore(int score);
 
     // Getters
     float getAgentXPosition();
@@ -28,9 +29,12 @@ public:
     float getDensity();
     float getFriction();
     float getRestitution();
+    int getID();
+    int getScore();
 
 private:
     int agent_id;
+    int agent_score;
     b2World &world; // Reference to b2World
     static const float SCALE;
     float agent_x_position = 100.f; // Start in the top left corner, will make this dynamic based on the window size later

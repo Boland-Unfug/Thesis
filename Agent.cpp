@@ -11,6 +11,7 @@ Agent::Agent(int agent_id, b2World &world, float agent_x_position, float agent_y
     fixtureDef.density = density;
     fixtureDef.friction = friction;
     fixtureDef.restitution = restitution;
+    fixtureDef.userData.pointer = agent_id;
     body->CreateFixture(&fixtureDef);
     agent_body.setRadius(agent_radius);
     agent_body.setFillColor(sf::Color::Red);
@@ -65,6 +66,11 @@ void Agent::setRestitution(float restitution)
     this->restitution = restitution;
 }
 
+void Agent::setScore(int score)
+{
+    agent_score = score;
+}
+
 // Getters
 
 float Agent::getAgentXPosition()
@@ -95,6 +101,16 @@ float Agent::getFriction()
 float Agent::getRestitution()
 {
     return restitution;
+}
+
+int Agent::getID()
+{
+    return agent_id;
+}
+
+int Agent::getScore()
+{
+    return agent_score;
 }
 
 // ... other methods ...
