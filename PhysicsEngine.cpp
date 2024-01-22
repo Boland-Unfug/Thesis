@@ -1,11 +1,15 @@
 #include "PhysicsEngine.h"
 
+
+
 PhysicsEngine::PhysicsEngine() { // default constructor
     world = new b2World(b2Vec2(0.0f, 0.0f));
+    // No modifications to the world
 }
 
-PhysicsEngine::PhysicsEngine(b2Vec2 gravity) {
+PhysicsEngine::PhysicsEngine(b2Vec2 gravity, b2ContactListener* listener) {
     world = new b2World(gravity);
+    world->SetContactListener(listener);
 }
 
 PhysicsEngine::~PhysicsEngine() {
@@ -13,6 +17,7 @@ PhysicsEngine::~PhysicsEngine() {
 }
 
 b2Body* PhysicsEngine::CreateWall(const b2Vec2& position, const b2Vec2& size) {
+    // Hand this meters, not pixels (divide by 30)
     b2BodyDef bodyDef;
     bodyDef.position = position;
     b2Body* body = world->CreateBody(&bodyDef);
@@ -38,6 +43,7 @@ b2Body* PhysicsEngine::CreateAgent(const b2Vec2& position, float radius) {
     fixtureDef.shape = &circle;
     fixtureDef.density = 1.0f;
     fixtureDef.friction = 0.3f;
+    fixtureDef.restitution = 0.5f;
 
     body->CreateFixture(&fixtureDef);
 
@@ -45,13 +51,13 @@ b2Body* PhysicsEngine::CreateAgent(const b2Vec2& position, float radius) {
 }
 
 void PhysicsEngine::PushAgent(b2Body* body, const b2Vec2& force) {
-    body->ApplyForceToCenter(force, true);
+    body->ApplyLinearImpulse(force, body->GetWorldCenter(), true);
+}
+
+void PhysicsEngine::Step(float timeStep, int velocityIterations, int positionIterations) {
+    world->Step(timeStep, velocityIterations, positionIterations);
 }
 
 b2World& PhysicsEngine::getWorld() {
     return *world;
 }
-
-
-
-

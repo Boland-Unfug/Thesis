@@ -3,6 +3,9 @@
 
 #include "PhysicsEngine.cpp"
 #include "RenderingEngine.cpp"
+#include "Agent.cpp"
+#include "Game.cpp"
+#include "CollisionListener.cpp"
 
 #include <iostream>
 #include <vector>
@@ -13,19 +16,40 @@
 int main() {
 
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(800, 800), "SFML window");
+    sf::RenderWindow window(sf::VideoMode(900.0f, 900.0f), "SFML window");
     
-    PhysicsEngine physicsEngine;
+    b2ContactListener* collisionListener = new MyContactListener();
+    PhysicsEngine physicsEngine(b2Vec2(0.0f, 0.0f), collisionListener);
 
-    // Create an agent 
-    physicsEngine.CreateAgent(b2Vec2(400.f, 400.f), 20.f);
+    b2World& world = physicsEngine.getWorld();
 
-    // Create a wall
-    physicsEngine.CreateWall(b2Vec2(400.f, 400.f), b2Vec2(20.f, 20.f));
+    //Create 100 agents
+    std::vector<Agent> agents;
+    for (int i = 0; i < 2; i++) {
+        agents.push_back(Agent(physicsEngine.CreateAgent(b2Vec2(2.f*i, 10.f), 2.f), i));
+        agents[i].connectAgentToBody();
+    }
+
+    // Get a list of agent pointers
+    std::vector<Agent*> agentPointers;
+    for (Agent agent : agents) {
+        agentPointers.push_back(&agent);
+    }
+
+    
+    // Push the agent
+    physicsEngine.PushAgent(agents[0].getBody(), b2Vec2(10.f, 10.f));
+
+
+
+    // Create 4 walls
+    physicsEngine.CreateWall(b2Vec2(0.f, 0.f), b2Vec2(60.f, 1.f));
+    physicsEngine.CreateWall(b2Vec2(0.f, 0.f), b2Vec2(1.f, 60.f));
+    physicsEngine.CreateWall(b2Vec2(0.f, 30.f), b2Vec2(60.f, 1.f));
+    physicsEngine.CreateWall(b2Vec2(30.f, 0.f), b2Vec2(1.f, 60.f));
 
     // Create a rendering engine
     RenderingEngine renderingEngine;
-
 
     // Render loop
     while (window.isOpen()) {
@@ -38,11 +62,18 @@ int main() {
             }
         }
 
+        // Update the physics engine
+        physicsEngine.Step(1.f / 60.f, 8, 3);
+
+
+
         // Clear screen
         window.clear();
 
-        // Draw the circle
-        renderingEngine.drawAgent(window, physicsEngine.getAgentBody());
+        // Draw the circles
+        for (Agent agent : agents){
+            renderingEngine.drawAgent(window, agent.getBody(), sf::Color::Red);
+        }
 
         // Update the window
         window.display();
