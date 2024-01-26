@@ -1,7 +1,6 @@
 #ifndef GAMEMANEUVERS_H
 #define GAMEMANEUVERS_H
 
-#include "Agent.h"
 #include "GameManeuver.h"
 
 class Left : public GameManeuver

@@ -17,23 +17,24 @@ int main() {
 
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(900.0f, 900.0f), "SFML window");
+    window.setFramerateLimit(1);
+
+    Game game;
+    // Get the pointer
+    Game* gamePointer = &game;
     
-    b2ContactListener* collisionListener = new MyContactListener();
-    PhysicsEngine physicsEngine(b2Vec2(0.0f, 0.0f), collisionListener);
+    b2ContactListener* collisionListener = new MyContactListener(gamePointer);
+    PhysicsEngine physicsEngine(b2Vec2(0.0f, 1.0f), collisionListener);
 
     b2World& world = physicsEngine.getWorld();
 
     //Create 100 agents
     std::vector<Agent> agents;
-    for (int i = 0; i < 2; i++) {
-        agents.push_back(Agent(physicsEngine.CreateAgent(b2Vec2(2.f*i, 10.f), 2.f), i));
-        agents[i].connectAgentToBody();
-    }
-
-    // Get a list of agent pointers
-    std::vector<Agent*> agentPointers;
-    for (Agent agent : agents) {
-        agentPointers.push_back(&agent);
+    for (int i = 1; i < 10; i++) {
+        Agent *agent = new Agent(physicsEngine.CreateAgent(b2Vec2(1.0f + i, 1.0f), 1.0f), i);
+        agent->connectAgentToBody();
+        agents.push_back(*agent);
+        
     }
 
     

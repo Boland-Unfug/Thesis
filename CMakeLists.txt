@@ -5,6 +5,8 @@ project(MySFMLProject)
 # Specify the C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -Wsign-conversion -Wconversion")
+
 
 # Find SFML. If using a specific component like graphics, window, system, you can specify it
 set(SFML_DIR C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/share/sfml/)

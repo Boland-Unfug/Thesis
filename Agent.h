@@ -8,12 +8,15 @@ class Agent {
 public:
     Agent(b2Body* body, int id);
     ~Agent();
+
     void connectAgentToBody();
     // bool doTactic() const {return tactic.doTactic();};
 
     // Getters
     int getScore();
+    int getId();
     b2Body* getBody();
+    Agent getAgent() {return *this;};
 
 
     // Setters
@@ -21,9 +24,9 @@ public:
 
     private:
         int score = 0;
-        int id;
+        int id = 0;
         b2Body* body;
-        GameTactic* tactic;
+        // GameTactic* tactic;
 
 };
 

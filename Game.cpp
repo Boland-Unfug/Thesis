@@ -1,4 +1,5 @@
 #include "Game.h"
+#include<iostream>
 
 Game::Game() {}
 
@@ -32,9 +33,8 @@ void Game::play(Agent &agent1, Agent &agent2) {
     playerChoices.second = 1;
 
     Pair payoff = getPayoff(playerChoices);
-
-    agent1.setScore(payoff.first);
-    agent2.setScore(payoff.second);
+    agent1.setScore(payoff.first + agent1.getScore());
+    agent2.setScore(payoff.second + agent2.getScore());
 }
 
 // Path: Agent.h

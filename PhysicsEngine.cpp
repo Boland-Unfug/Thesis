@@ -42,8 +42,8 @@ b2Body* PhysicsEngine::CreateAgent(const b2Vec2& position, float radius) {
     b2FixtureDef fixtureDef;
     fixtureDef.shape = &circle;
     fixtureDef.density = 1.0f;
-    fixtureDef.friction = 0.3f;
-    fixtureDef.restitution = 0.5f;
+    fixtureDef.friction = 0.0f;
+    fixtureDef.restitution = 1.0f;
 
     body->CreateFixture(&fixtureDef);
 
