@@ -6,6 +6,7 @@
 #include "Agent.cpp"
 #include "Game.cpp"
 #include "CollisionListener.cpp"
+#include "GameTactics.h"
 
 #include <iostream>
 #include <vector>
@@ -30,12 +31,15 @@ int main() {
 
     //Create 100 agents
     std::vector<Agent> agents;
+    // This seems to cause a lot of problems, possibly because the copy function when pushing
     for (int i = 1; i < 10; i++) {
         Agent *agent = new Agent(physicsEngine.CreateAgent(b2Vec2(1.0f + i, 1.0f), 1.0f), i);
         agent->connectAgentToBody();
+        agent->setTactic(new Cooperate());
         agents.push_back(*agent);
         
     }
+
 
     
     // Push the agent

@@ -2,17 +2,21 @@
 #define GAMETACTICS_H
 
 #include "GameTactic.h"
+#include <iostream>
 
-class Betray : public GameTactic
+class Defect : public GameTactic
 {
     public:
-        bool doTactic() const override {return 0;};
+        Defect() = default;
+        signed char doTactic() const override {
+            return 0;};
 };
 
 class Cooperate : public GameTactic
 {
     public:
-        bool doTactic() const override {return 1;};
+        Cooperate() = default;
+        signed char doTactic() const override {return 1;};
 };
 
 #endif // GAMETACTICS_H

@@ -40,11 +40,11 @@ class MyContactListener : public b2ContactListener {
         // Called when two fixtures begin to touch
         b2Fixture* fixtureA = contact->GetFixtureA();
         b2Fixture* fixtureB = contact->GetFixtureB();
-        std::cout << fixtureA->GetUserData().pointer << std::endl;
-        std::cout << fixtureB->GetUserData().pointer << std::endl;
+        // std::cout << fixtureA->GetUserData().pointer << std::endl;
+        // std::cout << fixtureB->GetUserData().pointer << std::endl;
         int agentA_id = fixtureA->GetUserData().pointer;
         int agentB_id = fixtureB->GetUserData().pointer;
-        std::cout << "Begin contact between " << agentA_id << " and " << agentB_id << std::endl;
+        // std::cout << "Begin contact between " << agentA_id << " and " << agentB_id << std::endl;
         // ... Handle the beginning of a contact
     }
 

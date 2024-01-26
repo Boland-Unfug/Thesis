@@ -19,25 +19,13 @@ public:
             return;
         }
 
-
-        // Check the pointers, reinterpret_cast
-        uintptr_t pointer1 = body1->GetUserData().pointer;
-        uintptr_t pointer2 = body2->GetUserData().pointer;
-
         Agent *agent1 = reinterpret_cast<Agent *>(body1->GetUserData().pointer);
         Agent *agent2 = reinterpret_cast<Agent *>(body2->GetUserData().pointer);
 
 
-        if (agent1 != nullptr){
-            // Agent ID's
-            // SO its accessing the right pointer, but the values are wrong
-            std::cout << "Agent 1 Pointer: " << agent1 << std::endl;
-            std::cout << "Agent 1 ID: " << agent1->getId() << std::endl;
-        }
-        if (agent2 != nullptr){
-            // Agent ID's
-            std::cout << "Agent 2 Pointer: " << agent2 << std::endl;
-            std::cout << "Agent 2 ID: " << agent2->getId() << std::endl;
+        if (agent1 != nullptr && agent2 != nullptr){
+            // Play A game
+            game->play(*agent1, *agent2);
         }
     }
 
