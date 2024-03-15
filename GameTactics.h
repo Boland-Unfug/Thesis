@@ -16,7 +16,8 @@ class Cooperate : public GameTactic
 {
     public:
         Cooperate() = default;
-        signed char doTactic() const override {return 1;};
+        signed char doTactic() const override {
+            return 1;};
 };
 
 #endif // GAMETACTICS_H

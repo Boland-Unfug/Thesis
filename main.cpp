@@ -18,7 +18,7 @@ int main() {
 
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(900.0f, 900.0f), "SFML window");
-    window.setFramerateLimit(1);
+    window.setFramerateLimit(100);
 
     Game game;
     // Get the pointer
@@ -27,17 +27,18 @@ int main() {
     b2ContactListener* collisionListener = new MyContactListener(gamePointer);
     PhysicsEngine physicsEngine(b2Vec2(0.0f, 1.0f), collisionListener);
 
-    b2World& world = physicsEngine.getWorld();
-
     //Create 100 agents
     std::vector<Agent> agents;
-    // This seems to cause a lot of problems, possibly because the copy function when pushing
-    for (int i = 1; i < 10; i++) {
+    // This seems to cause a lot of problems, possibly because the copy function when pushing & pointers
+    for (int i = 1; i < 5; i++) {
         Agent *agent = new Agent(physicsEngine.CreateAgent(b2Vec2(1.0f + i, 1.0f), 1.0f), i);
         agent->connectAgentToBody();
-        agent->setTactic(new Cooperate());
+        if (i % 2 == 0) {
+            agent->setTactic(new Defect());
+        } else {
+            agent->setTactic(new Cooperate());
+        }
         agents.push_back(*agent);
-        
     }
 
 

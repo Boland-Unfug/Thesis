@@ -10,7 +10,8 @@ public:
     ~Agent();
 
     void connectAgentToBody();
-    signed char doTactic() const {return tactic->doTactic();};
+    signed char doTactic() const {
+        return tactic->doTactic();};
 
     // Getters
     int getScore();

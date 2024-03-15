@@ -19,8 +19,9 @@ struct Pair {
 // Cooperate is 0, betray is 1
 // The beauty of this is I can access the values extremely flexibly.
 // I can find data through a pair of choices, for a single player, as a number using bit shifts, etc
-    {{3, 3}, {5, 0}},
-    {{0, 5}, {1, 1}}
+    {{1, 1}, {0, 5}},
+    {{5, 0}, {3, 3}}
+    // Had to swap them becase I have cooperate as 1 and betray as 0
 };
 
 class Game {
