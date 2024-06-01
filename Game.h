@@ -1,6 +1,7 @@
 // This will contain the game rules and tables
 #include "Agent.h"
 
+
 #ifndef GAME_H
 #define GAME_H
 
@@ -11,16 +12,16 @@ struct Set {
 struct Pair {
     // I use this for future flexibility and they are stored in the same amount of data as a bool
     // Its compatable with both the payoff matrix and the choices matrix
-    signed char first;
-    signed char second;
+    unsigned char first;
+    unsigned char second;
 };
 
     static Pair payoffMatrix[2][2] = { // Will make this variable later, as long as it follows the prisoners dilemma rules
 // Cooperate is 0, betray is 1
 // The beauty of this is I can access the values extremely flexibly.
 // I can find data through a pair of choices, for a single player, as a number using bit shifts, etc
-    {{1, 1}, {0, 5}},
-    {{5, 0}, {3, 3}}
+    {{1, 1}, {5, 0}},
+    {{0, 5}, {3, 3}}
     // Had to swap them becase I have cooperate as 1 and betray as 0
 };
 
@@ -31,6 +32,7 @@ class Game {
         ~Game();
 
         void play(Agent &agent1, Agent &agent2);
+        
 
         // Getters
         Pair getPayoff(Pair playerChoices);

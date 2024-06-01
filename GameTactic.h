@@ -6,9 +6,8 @@
 class GameTactic
 {
     public:
-        GameTactic() = default;
         virtual ~GameTactic() = default;
-        virtual signed char doTactic() const = 0; // I use unsigned char because it is the same size as bool and mmore flexible
+        virtual unsigned char doTactic() const = 0; // I use unsigned char because it is the same size as bool and mmore flexible
 };
 
 #endif // GAMEETACTIC_H

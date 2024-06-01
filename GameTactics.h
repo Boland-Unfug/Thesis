@@ -8,7 +8,7 @@ class Defect : public GameTactic
 {
     public:
         Defect() = default;
-        signed char doTactic() const override {
+        unsigned char doTactic() const override {
             return 0;};
 };
 
@@ -16,7 +16,7 @@ class Cooperate : public GameTactic
 {
     public:
         Cooperate() = default;
-        signed char doTactic() const override {
+        unsigned char doTactic() const override {
             return 1;};
 };
 

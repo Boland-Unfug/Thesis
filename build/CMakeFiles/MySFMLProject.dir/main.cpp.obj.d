@@ -318,6 +318,8 @@ CMakeFiles/MySFMLProject.dir/main.cpp.obj: \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/iostream \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/istream \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/istream.tcc \
+  C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/GameManeuvers.h \
+  C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/GameManeuver.h \
   C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/Game.cpp \
   C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/Game.h \
   C:/Users/boogl/.vscode-insiders/Projects/Test\ 2/CollisionListener.cpp

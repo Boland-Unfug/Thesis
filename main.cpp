@@ -7,14 +7,14 @@
 #include "Game.cpp"
 #include "CollisionListener.cpp"
 #include "GameTactics.h"
+#include "GameManeuvers.h"
 
 #include <iostream>
 #include <vector>
 
 
-
-
 int main() {
+    // I need to write static_cast<int> to print the value of the signed char to print it as an integer
 
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(900.0f, 900.0f), "SFML window");
@@ -25,19 +25,30 @@ int main() {
     Game* gamePointer = &game;
     
     b2ContactListener* collisionListener = new MyContactListener(gamePointer);
-    PhysicsEngine physicsEngine(b2Vec2(0.0f, 1.0f), collisionListener);
+    PhysicsEngine physicsEngine(b2Vec2(0.0f, 0.0f), collisionListener);
 
     //Create 100 agents
     std::vector<Agent> agents;
     // This seems to cause a lot of problems, possibly because the copy function when pushing & pointers
-    for (int i = 1; i < 5; i++) {
-        Agent *agent = new Agent(physicsEngine.CreateAgent(b2Vec2(1.0f + i, 1.0f), 1.0f), i);
+    for (int i = 1; i < 500; i++) {
+        Agent *agent = new Agent(physicsEngine.CreateAgent(b2Vec2(1.0f, 1.0f), 0.2f), i);
         agent->connectAgentToBody();
         if (i % 2 == 0) {
             agent->setTactic(new Defect());
         } else {
             agent->setTactic(new Cooperate());
         }
+        if (i % 4 == 0) {
+            agent->setManeuver(new Up());
+        } else if (i % 3 == 0) {
+            agent->setManeuver(new Down());
+        } else if (i % 2 == 0) {
+            agent->setManeuver(new Left());
+        } else {
+            agent->setManeuver(new Right());
+        }
+
+
         agents.push_back(*agent);
     }
 
@@ -75,6 +86,12 @@ int main() {
 
         // Clear screen
         window.clear();
+
+        // Move the agents
+        for (Agent agent : agents) {
+            // get the game maneuver of the agent
+            physicsEngine.PushAgent(agent.getBody(), agent.doManeuver());
+        }
 
         // Draw the circles
         for (Agent agent : agents){
