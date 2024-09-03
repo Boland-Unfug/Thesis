@@ -1,5 +1,5 @@
-C:/Users/boogl/.vscode-insiders/Projects/Test 2/build/CMakeFiles/MySFMLProject.dir
-C:/Users/boogl/.vscode-insiders/Projects/Test 2/build/CMakeFiles/package.dir
-C:/Users/boogl/.vscode-insiders/Projects/Test 2/build/CMakeFiles/package_source.dir
-C:/Users/boogl/.vscode-insiders/Projects/Test 2/build/CMakeFiles/edit_cache.dir
-C:/Users/boogl/.vscode-insiders/Projects/Test 2/build/CMakeFiles/rebuild_cache.dir
+C:/Users/boogl/.vscode-insiders/Projects/Thesis/build/CMakeFiles/MySFMLProject.dir
+C:/Users/boogl/.vscode-insiders/Projects/Thesis/build/CMakeFiles/package.dir
+C:/Users/boogl/.vscode-insiders/Projects/Thesis/build/CMakeFiles/package_source.dir
+C:/Users/boogl/.vscode-insiders/Projects/Thesis/build/CMakeFiles/edit_cache.dir
+C:/Users/boogl/.vscode-insiders/Projects/Thesis/build/CMakeFiles/rebuild_cache.dir

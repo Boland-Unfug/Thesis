@@ -30,7 +30,7 @@ int main() {
     //Create 100 agents
     std::vector<Agent> agents;
     // This seems to cause a lot of problems, possibly because the copy function when pushing & pointers
-    for (int i = 1; i < 500; i++) {
+    for (int i = 1; i < 100; i++) {
         Agent *agent = new Agent(physicsEngine.CreateAgent(b2Vec2(1.0f, 1.0f), 0.2f), i);
         agent->connectAgentToBody();
         if (i % 2 == 0) {
@@ -38,15 +38,16 @@ int main() {
         } else {
             agent->setTactic(new Cooperate());
         }
-        if (i % 4 == 0) {
-            agent->setManeuver(new Up());
-        } else if (i % 3 == 0) {
-            agent->setManeuver(new Down());
-        } else if (i % 2 == 0) {
-            agent->setManeuver(new Left());
-        } else {
-            agent->setManeuver(new Right());
-        }
+        agent->setManeuver(new Down());
+        // if (i % 4 == 0) {
+        //     agent->setManeuver(new Up());
+        // } else if (i % 3 == 0) {
+        //     agent->setManeuver(new Down());
+        // } else if (i % 2 == 0) {
+        //     agent->setManeuver(new Left());
+        // } else {
+        //     agent->setManeuver(new Right());
+        // }
 
 
         agents.push_back(*agent);

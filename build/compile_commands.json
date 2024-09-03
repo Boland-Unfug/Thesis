@@ -1,8 +1,8 @@
 [
 {
-  "directory": "C:/Users/boogl/.vscode-insiders/Projects/Test 2/build",
-  "command": "C:\\Users\\boogl\\.vscode-insiders\\Projects\\mingw64\\bin\\clang++.exe  @CMakeFiles/MySFMLProject.dir/includes_CXX.rsp  -Wall -Wextra -Wpedantic -Wsign-conversion -Wconversion -g -std=gnu++17 -o CMakeFiles\\MySFMLProject.dir\\main.cpp.obj -c \"C:\\Users\\boogl\\.vscode-insiders\\Projects\\Test 2\\main.cpp\"",
-  "file": "C:/Users/boogl/.vscode-insiders/Projects/Test 2/main.cpp",
+  "directory": "C:/Users/boogl/.vscode-insiders/Projects/Thesis/build",
+  "command": "C:\\Users\\boogl\\.vscode-insiders\\Projects\\mingw64\\bin\\clang++.exe  @CMakeFiles/MySFMLProject.dir/includes_CXX.rsp  -Wall -Wextra -Wpedantic -Wsign-conversion -Wconversion -g -std=gnu++17 -o CMakeFiles\\MySFMLProject.dir\\main.cpp.obj -c C:\\Users\\boogl\\.vscode-insiders\\Projects\\Thesis\\main.cpp",
+  "file": "C:/Users/boogl/.vscode-insiders/Projects/Thesis/main.cpp",
   "output": "CMakeFiles/MySFMLProject.dir/main.cpp.obj"
 }
 ]

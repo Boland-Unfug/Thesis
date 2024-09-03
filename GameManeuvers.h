@@ -9,7 +9,7 @@ class Up : public GameManeuver
     public:
         Up() = default;
         b2Vec2 doManeuver() const override {
-            return b2Vec2(0.0f, 1.0f);};
+            return b2Vec2(0.0f, -1.0f);};
 };
 
 class Down : public GameManeuver
@@ -17,7 +17,7 @@ class Down : public GameManeuver
     public:
         Down() = default;
         b2Vec2 doManeuver() const override {
-            return b2Vec2(0.0f, -1.0f);};
+            return b2Vec2(0.0f, 1.0f);};
 };
 
 class Left : public GameManeuver

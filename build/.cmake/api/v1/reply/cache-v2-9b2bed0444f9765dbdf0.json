@@ -79,7 +79,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/boogl/.vscode-insiders/Projects/Test 2/build"
+			"value" : "c:/Users/boogl/.vscode-insiders/Projects/Thesis/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -643,7 +643,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/boogl/.vscode-insiders/Projects/Test 2/build/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/boogl/.vscode-insiders/Projects/Thesis/build/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -715,7 +715,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/boogl/.vscode-insiders/Projects/Test 2"
+			"value" : "C:/Users/boogl/.vscode-insiders/Projects/Thesis"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1695,7 +1695,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/boogl/.vscode-insiders/Projects/Test 2/build"
+			"value" : "C:/Users/boogl/.vscode-insiders/Projects/Thesis/build"
 		},
 		{
 			"name" : "MyProject_IS_TOP_LEVEL",
@@ -1719,7 +1719,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/boogl/.vscode-insiders/Projects/Test 2"
+			"value" : "C:/Users/boogl/.vscode-insiders/Projects/Thesis"
 		},
 		{
 			"name" : "MySFMLProject_BINARY_DIR",
@@ -1731,7 +1731,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/boogl/.vscode-insiders/Projects/Test 2/build"
+			"value" : "C:/Users/boogl/.vscode-insiders/Projects/Thesis/build"
 		},
 		{
 			"name" : "MySFMLProject_IS_TOP_LEVEL",
@@ -1755,7 +1755,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/boogl/.vscode-insiders/Projects/Test 2"
+			"value" : "C:/Users/boogl/.vscode-insiders/Projects/Thesis"
 		},
 		{
 			"name" : "SFML_DIR",
