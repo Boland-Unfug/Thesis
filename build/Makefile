@@ -56,10 +56,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\boogl\.vscode-insiders\Projects\Test 2"
+CMAKE_SOURCE_DIR = C:\Users\boogl\.vscode-insiders\Projects\Thesis
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\boogl\.vscode-insiders\Projects\Test 2\build"
+CMAKE_BINARY_DIR = C:\Users\boogl\.vscode-insiders\Projects\Thesis\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -77,7 +77,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	"C:\Program Files\CMake\bin\cpack.exe" --config ./CPackSourceConfig.cmake "C:/Users/boogl/.vscode-insiders/Projects/Test 2/build/CPackSourceConfig.cmake"
+	"C:\Program Files\CMake\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/Users/boogl/.vscode-insiders/Projects/Thesis/build/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -106,9 +106,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\boogl\.vscode-insiders\Projects\Test 2\build\CMakeFiles" "C:\Users\boogl\.vscode-insiders\Projects\Test 2\build\\CMakeFiles\progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\boogl\.vscode-insiders\Projects\Thesis\build\CMakeFiles C:\Users\boogl\.vscode-insiders\Projects\Thesis\build\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\boogl\.vscode-insiders\Projects\Test 2\build\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\boogl\.vscode-insiders\Projects\Thesis\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -148,6 +148,54 @@ MySFMLProject/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\MySFMLProject.dir\build.make CMakeFiles/MySFMLProject.dir/build
 .PHONY : MySFMLProject/fast
 
+PhysicsEngine.obj: PhysicsEngine.cpp.obj
+.PHONY : PhysicsEngine.obj
+
+# target to build an object file
+PhysicsEngine.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MySFMLProject.dir\build.make CMakeFiles/MySFMLProject.dir/PhysicsEngine.cpp.obj
+.PHONY : PhysicsEngine.cpp.obj
+
+PhysicsEngine.i: PhysicsEngine.cpp.i
+.PHONY : PhysicsEngine.i
+
+# target to preprocess a source file
+PhysicsEngine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MySFMLProject.dir\build.make CMakeFiles/MySFMLProject.dir/PhysicsEngine.cpp.i
+.PHONY : PhysicsEngine.cpp.i
+
+PhysicsEngine.s: PhysicsEngine.cpp.s
+.PHONY : PhysicsEngine.s
+
+# target to generate assembly for a file
+PhysicsEngine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MySFMLProject.dir\build.make CMakeFiles/MySFMLProject.dir/PhysicsEngine.cpp.s
+.PHONY : PhysicsEngine.cpp.s
+
+RenderingEngine.obj: RenderingEngine.cpp.obj
+.PHONY : RenderingEngine.obj
+
+# target to build an object file
+RenderingEngine.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MySFMLProject.dir\build.make CMakeFiles/MySFMLProject.dir/RenderingEngine.cpp.obj
+.PHONY : RenderingEngine.cpp.obj
+
+RenderingEngine.i: RenderingEngine.cpp.i
+.PHONY : RenderingEngine.i
+
+# target to preprocess a source file
+RenderingEngine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MySFMLProject.dir\build.make CMakeFiles/MySFMLProject.dir/RenderingEngine.cpp.i
+.PHONY : RenderingEngine.cpp.i
+
+RenderingEngine.s: RenderingEngine.cpp.s
+.PHONY : RenderingEngine.s
+
+# target to generate assembly for a file
+RenderingEngine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MySFMLProject.dir\build.make CMakeFiles/MySFMLProject.dir/RenderingEngine.cpp.s
+.PHONY : RenderingEngine.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -183,6 +231,12 @@ help:
 	@echo ... package_source
 	@echo ... rebuild_cache
 	@echo ... MySFMLProject
+	@echo ... PhysicsEngine.obj
+	@echo ... PhysicsEngine.i
+	@echo ... PhysicsEngine.s
+	@echo ... RenderingEngine.obj
+	@echo ... RenderingEngine.i
+	@echo ... RenderingEngine.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

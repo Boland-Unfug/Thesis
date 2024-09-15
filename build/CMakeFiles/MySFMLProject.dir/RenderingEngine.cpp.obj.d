@@ -1,5 +1,5 @@
-CMakeFiles/MySFMLProject.dir/main.cpp.obj: \
-  C:/Users/boogl/.vscode-insiders/Projects/Thesis/main.cpp \
+CMakeFiles/MySFMLProject.dir/RenderingEngine.cpp.obj: \
+  C:/Users/boogl/.vscode-insiders/Projects/Thesis/RenderingEngine.cpp \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/iostream \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/requires_hosted.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -142,11 +142,7 @@ CMakeFiles/MySFMLProject.dir/main.cpp.obj: \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/ostream.tcc \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/istream \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/istream.tcc \
-  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/vector \
-  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_uninitialized.h \
-  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_vector.h \
-  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_bvector.h \
-  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/vector.tcc \
+  C:/Users/boogl/.vscode-insiders/Projects/Thesis/RenderingEngine.h \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/Graphics.hpp \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/Window.hpp \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/System.hpp \
@@ -206,6 +202,11 @@ CMakeFiles/MySFMLProject.dir/main.cpp.obj: \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/Window/Sensor.hpp \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/Window/Touch.hpp \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/Window/VideoMode.hpp \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/vector \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_uninitialized.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_vector.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_bvector.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/vector.tcc \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/Window/Window.hpp \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/Window/WindowBase.hpp \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/Window/Vulkan.hpp \
@@ -309,6 +310,4 @@ CMakeFiles/MySFMLProject.dir/main.cpp.obj: \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/box2d/b2_pulley_joint.h \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/box2d/b2_revolute_joint.h \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/box2d/b2_weld_joint.h \
-  C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/box2d/b2_wheel_joint.h \
-  C:/Users/boogl/.vscode-insiders/Projects/Thesis/PhysicsEngine.h \
-  C:/Users/boogl/.vscode-insiders/Projects/Thesis/RenderingEngine.h
+  C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/box2d/b2_wheel_joint.h

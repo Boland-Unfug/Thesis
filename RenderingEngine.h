@@ -1,3 +1,4 @@
+#pragma once
 #ifndef RENDERINGENGINE_H
 #define RENDERINGENGINE_H
 
@@ -7,16 +8,12 @@
 
 class RenderingEngine {
 public:
-    void drawAgent(sf::RenderWindow &window, b2Body *body, sf::Color color); // Draw an agent
-    // void drawWall(sf::RenderWindow &window, b2Body *body); // Draw a wall
-    // Other rendering-related methods
+    void DrawCircle(sf::RenderWindow &window, b2Body *body, sf::Color color); // Draw an agent
+    void Update(sf::RenderWindow &window, b2Body* bodies[], sf::Color colors[], int size); // Update the window with the new positions of the agents
+    // TODO might add more drawing functions
 
 private:
-    const float SCALE = 30.f;
-    // const int SCREEN_WIDTH = 800;
-    // const int SCREEN_HEIGHT = 800;
-    // const int FRAMERATE = 60;
-    // sf::RenderWindow &window;
+    const float SCALE = 30.f; // 30 pixels per meter, only universal constant
 };
 
 #endif // RENDERINGENGINE_H

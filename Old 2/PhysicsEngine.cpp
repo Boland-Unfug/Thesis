@@ -7,9 +7,9 @@ PhysicsEngine::PhysicsEngine() { // default constructor
     // No modifications to the world
 }
 
-PhysicsEngine::PhysicsEngine(b2Vec2 gravity/*,b2ContactListener* listener*/) { // constructor with gravity and listener TODO move listener so I don't need it as an input
+PhysicsEngine::PhysicsEngine(b2Vec2 gravity, b2ContactListener* listener) {
     world = new b2World(gravity);
-    // world->SetContactListener(listener);
+    world->SetContactListener(listener);
 }
 
 PhysicsEngine::~PhysicsEngine() {
@@ -30,7 +30,7 @@ b2Body* PhysicsEngine::CreateWall(const b2Vec2& position, const b2Vec2& size) {
     return body;
 }
 
-b2Body* PhysicsEngine::CreateCircle(const b2Vec2& position, float radius) {
+b2Body* PhysicsEngine::CreateAgent(const b2Vec2& position, float radius) {
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
     bodyDef.position = position;
@@ -50,7 +50,7 @@ b2Body* PhysicsEngine::CreateCircle(const b2Vec2& position, float radius) {
     return body;
 }
 
-void PhysicsEngine::PushCircle(b2Body* body, const b2Vec2& force) {
+void PhysicsEngine::PushAgent(b2Body* body, const b2Vec2& force) {
     body->ApplyLinearImpulse(force, body->GetWorldCenter(), true);
 }
 
