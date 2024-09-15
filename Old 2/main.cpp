@@ -15,7 +15,7 @@
 
 int main() {
     // I need to write static_cast<int> to print the value of the signed char to print it as an integer
-
+    std::cout << "Starting program 2" << std::endl;
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(900.0f, 900.0f), "SFML window");
     window.setFramerateLimit(100);

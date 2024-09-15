@@ -1,5 +1,5 @@
 #include "PhysicsEngine.h"
-
+#include <iostream>
 
 
 PhysicsEngine::PhysicsEngine() { // default constructor
@@ -30,22 +30,26 @@ b2Body* PhysicsEngine::CreateWall(const b2Vec2& position, const b2Vec2& size) {
     return body;
 }
 
-b2Body* PhysicsEngine::CreateCircle(const b2Vec2& position, float radius) {
+b2Body* PhysicsEngine::CreateCircle(int id, const b2Vec2& position, float radius, float density, float friction, float restitution) {
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
     bodyDef.position = position;
+    uintptr_t pointer = (uintptr_t)id;
+    bodyDef.userData.pointer = pointer;
     b2Body* body = world->CreateBody(&bodyDef);
 
     b2CircleShape circle;
     circle.m_radius = radius;
 
-    b2FixtureDef fixtureDef;
-    fixtureDef.shape = &circle;
-    fixtureDef.density = 1.0f;
-    fixtureDef.friction = 0.1f;
-    fixtureDef.restitution = 1.0f;
+    b2FixtureDef fixtureDef; // define the fixture, which defines the physics to apply to the body
+    fixtureDef.shape = &circle; 
+    fixtureDef.density = density;
+    fixtureDef.friction = friction;
+    fixtureDef.restitution = restitution;
+    
 
     body->CreateFixture(&fixtureDef);
+
 
     return body;
 }
@@ -54,9 +58,16 @@ void PhysicsEngine::PushCircle(b2Body* body, const b2Vec2& force) {
     body->ApplyLinearImpulse(force, body->GetWorldCenter(), true);
 }
 
-void PhysicsEngine::Step(float timeStep, int velocityIterations, int positionIterations) {
+b2Contact* PhysicsEngine::Step(float timeStep, int velocityIterations, int positionIterations) {
     world->Step(timeStep, velocityIterations, positionIterations);
+
+    // contact list
+    b2Contact* contacts = world->GetContactList();
+    return contacts;
 }
+
+
+
 
 b2World& PhysicsEngine::getWorld() {
     return *world;

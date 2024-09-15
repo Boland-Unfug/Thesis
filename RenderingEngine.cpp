@@ -28,7 +28,8 @@ void RenderingEngine::Update(sf::RenderWindow &window, b2Body* bodies[], sf::Col
     // Draw the circles
     for (int i = 0; i < (size - 1); i++)
     {
-        RenderingEngine::DrawCircle(window, bodies[i], colors[i]);
+        if (bodies[i] != nullptr)
+            RenderingEngine::DrawCircle(window, bodies[i], colors[i]);
     }
 
     // Update the window
