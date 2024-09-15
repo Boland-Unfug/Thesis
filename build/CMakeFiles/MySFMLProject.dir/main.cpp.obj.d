@@ -147,6 +147,7 @@ CMakeFiles/MySFMLProject.dir/main.cpp.obj: \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_vector.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_bvector.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/vector.tcc \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bitset \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/Graphics.hpp \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/Window.hpp \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/System.hpp \

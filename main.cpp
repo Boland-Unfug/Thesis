@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <bitset>
 
 #include <SFML/Graphics.hpp>
 #include <Box2D/Box2D.h>
@@ -18,6 +19,8 @@ int main()
     // Next I need to make it so that agents that go in early don't have an advantage, but later
 
     // make the simple agent? what does it even store? nothing the 'agent' here is the array positioni
+
+    // before I can move the game class, I have to set up collision detection DONE
 
     // Move over game class
     // connect game class to collision
@@ -45,8 +48,14 @@ int main()
     // Create a physics engine
     PhysicsEngine physicsEngine(b2Vec2(0.0f, 0.0f));
 
+    // Create 4 walls
+    physicsEngine.CreateWall(b2Vec2(0.f, 0.f), b2Vec2(60.f, 1.f));
+    physicsEngine.CreateWall(b2Vec2(0.f, 0.f), b2Vec2(1.f, 60.f));
+    physicsEngine.CreateWall(b2Vec2(0.f, 30.f), b2Vec2(60.f, 1.f));
+    physicsEngine.CreateWall(b2Vec2(30.f, 0.f), b2Vec2(1.f, 60.f));
+
     // Constants
-    const int numAgents = 1000; // TODO make this dynamic later
+    const int numAgents = 100; // TODO make this dynamic later
     const float agentRadius = 0.3f;
 
     // make the needed vectors
@@ -55,14 +64,7 @@ int main()
     {
         bodies[i] = nullptr;
     }
-    sf::Color colors[numAgents];                // array of colors (I want different colors available)
-    // int collisions[numAgents][numAgents] = {0}; // array of collisions
-
-    // Create 4 walls
-    physicsEngine.CreateWall(b2Vec2(0.f, 0.f), b2Vec2(60.f, 1.f));
-    physicsEngine.CreateWall(b2Vec2(0.f, 0.f), b2Vec2(1.f, 60.f));
-    physicsEngine.CreateWall(b2Vec2(0.f, 30.f), b2Vec2(60.f, 1.f));
-    physicsEngine.CreateWall(b2Vec2(30.f, 0.f), b2Vec2(1.f, 60.f));
+    sf::Color colors[numAgents];                // array of colors (I want different colors available
 
 
     // game loop
@@ -87,32 +89,29 @@ int main()
             physicsEngine.PushCircle(bodies[round], b2Vec2(10.f, 10.f));
         }
 
-        std::cout << "Round " << round << std::endl;
-        // Update the physics engine
+        std::bitset<numAgents> collisions[numAgents] = {0}; // 0 means no collision, 1 means collision
+
+        // Update the physics
         b2Contact *contacts = physicsEngine.Step(1.f / 60.f, 8, 3);
 
-        // for (b2Contact* contact = contacts; contact; contact = contact->GetNext())
-        // {
-        //     // std::cout << "Contact" << std::endl;
-        //     int id1 = contact->GetFixtureA()->GetBody()->GetUserData().pointer;
-        //     int id2 = contact->GetFixtureB()->GetBody()->GetUserData().pointer;
-        //     std::cout << "Collision between " << id1 << " and " << id2 << std::endl;
-        //     // flip the ids if they are out of order
-        //     if (id1 > id2){
-        //         int temp = id1;
-        //         id1 = id2;
-        //         id2 = temp;
-        //     }
-        //     // this is going to have to be pseudo dynamic, so here is what I will do
-        //     // I will have a matrix of collisions, and I will check if the collision has already happened
-        //     // I will then check if the collision has already happened, if it has, I will ignore it
-        //     // if it hasn't, I will add it to the list and then process it
-        //     if (collisions[id1][id2] == 0) {
-        //         // std::cout << "Collision between " << id1 << " and " << id2 << std::endl;
-        //         collisions[id1][id2] = 1;
-        //         // here is where I will play the game
-        //     }
-        // }
+        for (b2Contact* contact = contacts; contact; contact = contact->GetNext())
+        {
+
+            int id1 = contact->GetFixtureA()->GetBody()->GetUserData().pointer;
+            int id2 = contact->GetFixtureB()->GetBody()->GetUserData().pointer;
+
+            // flip the ids if they are out of order
+            if (id1 > id2){
+                int temp = id1;
+                id1 = id2;
+                id2 = temp;
+            }
+
+            if (collisions[id1][id2] == 0) {
+                collisions[id1][id2] = 1;
+                // here is where I will play the game
+            }
+        }
 
         // update the rendering engine
         renderingEngine.Update(window, bodies, colors, numAgents);

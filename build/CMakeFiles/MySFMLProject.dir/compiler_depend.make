@@ -601,6 +601,7 @@ CMakeFiles/MySFMLProject.dir/main.cpp.obj: C:/Users/boogl/.vscode-insiders/Proje
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/uses_allocator_args.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/utility.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/vector.tcc \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bitset \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/cctype \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/cerrno \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/clocale \
@@ -1465,3 +1466,5 @@ C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/inclu
 C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/Window/WindowStyle.hpp:
 
 C:/Users/boogl/.vscode-insiders/Projects/Thesis/main.cpp:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bitset:
