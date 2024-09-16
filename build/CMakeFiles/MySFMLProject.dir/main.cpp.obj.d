@@ -148,6 +148,19 @@ CMakeFiles/MySFMLProject.dir/main.cpp.obj: \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_bvector.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/vector.tcc \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bitset \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/unordered_map \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/unordered_map.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/hashtable.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/hashtable_policy.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/ext/aligned_buffer.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/enable_special_members.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/node_handle.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/erase_if.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/fstream \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/codecvt.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/basic_file.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++io.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/fstream.tcc \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/Graphics.hpp \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/Window.hpp \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/System.hpp \
@@ -178,7 +191,6 @@ CMakeFiles/MySFMLProject.dir/main.cpp.obj: \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/ctime \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/time_members.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/messages_members.h \
-  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/codecvt.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/locale_facets_nonio.tcc \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/locale_conv.h \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/System/Utf.inl \
@@ -235,11 +247,8 @@ CMakeFiles/MySFMLProject.dir/main.cpp.obj: \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/Graphics/Image.hpp \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/map \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_tree.h \
-  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/ext/aligned_buffer.h \
-  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/node_handle.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_map.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_multimap.h \
-  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/erase_if.h \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/Graphics/RectangleShape.hpp \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/Graphics/RenderTarget.hpp \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/Graphics/View.hpp \
@@ -312,4 +321,16 @@ CMakeFiles/MySFMLProject.dir/main.cpp.obj: \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/box2d/b2_weld_joint.h \
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/box2d/b2_wheel_joint.h \
   C:/Users/boogl/.vscode-insiders/Projects/Thesis/PhysicsEngine.h \
-  C:/Users/boogl/.vscode-insiders/Projects/Thesis/RenderingEngine.h
+  C:/Users/boogl/.vscode-insiders/Projects/Thesis/RenderingEngine.h \
+  C:/Users/boogl/.vscode-insiders/Projects/Thesis/GameManeuver.h \
+  C:/Users/boogl/.vscode-insiders/Projects/Thesis/GameManeuvers.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/random \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/cstdint \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/random.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/opt_random.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/random.tcc \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/numeric \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_numeric.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/pstl/glue_numeric_defs.h \
+  C:/Users/boogl/.vscode-insiders/Projects/Thesis/GameTactic.h \
+  C:/Users/boogl/.vscode-insiders/Projects/Thesis/GameTactics.h

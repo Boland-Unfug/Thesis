@@ -522,6 +522,10 @@ CMakeFiles/MySFMLProject.dir/RenderingEngine.cpp.obj: C:/Users/boogl/.vscode-ins
   C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/box2d/box2d.h
 
 CMakeFiles/MySFMLProject.dir/main.cpp.obj: C:/Users/boogl/.vscode-insiders/Projects/Thesis/main.cpp \
+  C:/Users/boogl/.vscode-insiders/Projects/Thesis/GameManeuver.h \
+  C:/Users/boogl/.vscode-insiders/Projects/Thesis/GameManeuvers.h \
+  C:/Users/boogl/.vscode-insiders/Projects/Thesis/GameTactic.h \
+  C:/Users/boogl/.vscode-insiders/Projects/Thesis/GameTactics.h \
   C:/Users/boogl/.vscode-insiders/Projects/Thesis/PhysicsEngine.h \
   C:/Users/boogl/.vscode-insiders/Projects/Thesis/RenderingEngine.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/algorithm \
@@ -541,13 +545,17 @@ CMakeFiles/MySFMLProject.dir/main.cpp.obj: C:/Users/boogl/.vscode-insiders/Proje
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/cpp_type_traits.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/cxxabi_forced.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/cxxabi_init_exception.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/enable_special_members.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/erase_if.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/exception.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/exception_defines.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/exception_ptr.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/fstream.tcc \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/functexcept.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/functional_hash.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/hash_bytes.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/hashtable.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/hashtable_policy.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/invoke.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/ios_base.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/istream.tcc \
@@ -570,6 +578,8 @@ CMakeFiles/MySFMLProject.dir/main.cpp.obj: C:/Users/boogl/.vscode-insiders/Proje
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/postypes.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/predefined_ops.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/ptr_traits.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/random.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/random.tcc \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/range_access.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/refwrap.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/requires_hosted.h \
@@ -586,6 +596,7 @@ CMakeFiles/MySFMLProject.dir/main.cpp.obj: C:/Users/boogl/.vscode-insiders/Proje
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_iterator_base_types.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_map.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_multimap.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_numeric.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_pair.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_tempbuf.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_tree.h \
@@ -597,6 +608,7 @@ CMakeFiles/MySFMLProject.dir/main.cpp.obj: C:/Users/boogl/.vscode-insiders/Proje
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/string_view.tcc \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stringfwd.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/uniform_int_dist.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/unordered_map.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/uses_allocator.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/uses_allocator_args.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/utility.h \
@@ -607,6 +619,7 @@ CMakeFiles/MySFMLProject.dir/main.cpp.obj: C:/Users/boogl/.vscode-insiders/Proje
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/clocale \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/cmath \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/cstddef \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/cstdint \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/cstdio \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/cstdlib \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/ctime \
@@ -621,6 +634,7 @@ CMakeFiles/MySFMLProject.dir/main.cpp.obj: C:/Users/boogl/.vscode-insiders/Proje
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/ext/numeric_traits.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/ext/string_conversions.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/ext/type_traits.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/fstream \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/initializer_list \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/ios \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/iosfwd \
@@ -632,10 +646,13 @@ CMakeFiles/MySFMLProject.dir/main.cpp.obj: C:/Users/boogl/.vscode-insiders/Proje
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/map \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/math.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/new \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/numeric \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/ostream \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/pstl/execution_defs.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/pstl/glue_algorithm_defs.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/pstl/glue_numeric_defs.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/pstl/pstl_config.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/random \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/stdexcept \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/stdlib.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/streambuf \
@@ -657,10 +674,13 @@ CMakeFiles/MySFMLProject.dir/main.cpp.obj: C:/Users/boogl/.vscode-insiders/Proje
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/tuple \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/type_traits \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/typeinfo \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/unordered_map \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/vector \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/basic_file.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++config.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++io.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++locale.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/cpu_defines.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/ctype_base.h \
@@ -669,6 +689,7 @@ CMakeFiles/MySFMLProject.dir/main.cpp.obj: C:/Users/boogl/.vscode-insiders/Proje
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/gthr-default.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/gthr.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/messages_members.h \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/opt_random.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/os_defines.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/time_members.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/lib/clang/17/include/__stddef_max_align_t.h \
@@ -925,6 +946,8 @@ C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/concept
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/cpp_type_traits.h:
 
+C:/Users/boogl/.vscode-insiders/Projects/Thesis/GameTactic.h:
+
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_construct.h:
 
 C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/box2d/b2_api.h:
@@ -982,6 +1005,8 @@ C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/inclu
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/move.h:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/refwrap.h:
+
+C:/Users/boogl/.vscode-insiders/Projects/Thesis/GameManeuvers.h:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/map:
 
@@ -1052,6 +1077,8 @@ C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/cstdio:
 C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/System/ThreadLocal.hpp:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/cwctype:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/unordered_map:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/debug/assertions.h:
 
@@ -1145,6 +1172,8 @@ C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-m
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/cpu_defines.h:
 
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/random.h:
+
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/ctype_base.h:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/gthr.h:
@@ -1235,6 +1264,8 @@ C:/Users/boogl/.vscode-insiders/Projects/mingw64/x86_64-w64-mingw32/include/sec_
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/x86_64-w64-mingw32/include/sec_api/wchar_s.h:
 
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/cstdint:
+
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/x86_64-w64-mingw32/include/signal.h:
 
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/x86_64-w64-mingw32/include/stdint.h:
@@ -1310,6 +1341,8 @@ C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/inclu
 C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/Window/ContextSettings.hpp:
 
 C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/box2d/b2_world_callbacks.h:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/enable_special_members.h:
 
 C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/box2d/box2d.h:
 
@@ -1427,9 +1460,13 @@ C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/inclu
 
 C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/System/Lock.hpp:
 
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/fstream:
+
 C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/System/NonCopyable.hpp:
 
 C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/System/Sleep.hpp:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/basic_file.h:
 
 C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/include/SFML/System/String.inl:
 
@@ -1467,4 +1504,30 @@ C:/Users/boogl/.vscode-insiders/Projects/vcpkg/installed/x64-mingw-dynamic/inclu
 
 C:/Users/boogl/.vscode-insiders/Projects/Thesis/main.cpp:
 
+C:/Users/boogl/.vscode-insiders/Projects/Thesis/GameManeuver.h:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/fstream.tcc:
+
+C:/Users/boogl/.vscode-insiders/Projects/Thesis/GameTactics.h:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/hashtable.h:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/hashtable_policy.h:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/random.tcc:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/stl_numeric.h:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/unordered_map.h:
+
 C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bitset:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/numeric:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/pstl/glue_numeric_defs.h:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/random:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/c++io.h:
+
+C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/opt_random.h:
