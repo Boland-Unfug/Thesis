@@ -3,6 +3,7 @@
 #include <bitset>
 #include <unordered_map>
 #include <fstream>
+#include <string>
 
 #include <SFML/Graphics.hpp>
 #include <Box2D/Box2D.h>
@@ -21,19 +22,35 @@ int main()
     The rendering should not be a problem, loaded 100000 in ~1 second
 
     TODO:
-    - make the functions more flexible
+    - Make program customizable from terminal
+        - make the functions more flexible
+        - add nodraw option
+        - make strategies and maneuvers customizable
     - improve the file writing to store different games
     - add python data analysis
+        - add tag array
+        - save to a seperate file
+        - oh no it converts the data wrong in python
+        - try converting to int before storing in file
+    - Make the tactic and maneuver initialization process better
+        - ensure the same amounts of each agent or at least have that be an option
+        - make the code more dense if possible
     - add more game tactics
         - tit for tat
+            - I can hand it an array of size [agentnum] full of 0's at instantiation
+            - I can then have  it take the agent it is playing and  reference the table for its move 
         - tit for two tats
+        - naive tit for tat
+            - I can have it store just the last move
+            - I am going to need a spot to update behaviours after they make their moves
     - make tactics the color
     - add more game maneuvers
         - chase
         - flee
         - move to center
-    - make maneuvers the modification
-    - add nodraw
+    - make maneuvers the color modification
+
+
 
 
     DONE:
@@ -78,6 +95,13 @@ int main()
     set up tactics DONEish
     I have them in but they are not complicated yet
     also they don't impact the game yet DONE although I might want to lower the values
+
+    running into an extremely odd issue while trying to add titfortat
+    randomly, the window will not open and the program will just end, which leads me to believe it is a memory issue
+    However, I have tracked a possibly different error to the draw function
+    So I will remove all randomness first and see if its still happens
+    Cause: Titfortat
+    probably because I store an array of 0's and ones, and with a lot of those I run into problems
     **/
 
     std::cout << "Starting program" << std::endl;
@@ -115,6 +139,10 @@ int main()
     }
 
     sf::Color colors[numAgents]; // array of colors (I want different colors available
+    for (int i = 0; i < numAgents; i++)
+    {
+        colors[i] = sf::Color::Red;
+    }
 
     int scores[numAgents] = {0}; // array of scores very unnecessary, I only care about history but thouroughness ig
 
@@ -124,66 +152,86 @@ int main()
     GameManeuver *maneuvers[numAgents]; // array of maneuvers
     for (int i = 0; i < numAgents; i++)
     {
-        if (i % 6 == 0)
+        if (i % 4 == 0)
         {
             maneuvers[i] = new Up();
-            colors[i] = sf::Color::Red;
+            // colors[i] = sf::Color::Red;
         }
-        else if (i % 6 == 1)
+        else if (i % 4 == 1)
         {
             maneuvers[i] = new Down();
-            colors[i] = sf::Color::Blue;
+            // colors[i] = sf::Color::Blue;
         }
-        else if (i % 6 == 2)
+        else if (i % 4 == 2)
         {
             maneuvers[i] = new Left();
-            colors[i] = sf::Color::Green;
+            // colors[i] = sf::Color::Green;
         }
-        else if (i % 6 == 3)
+        else if (i % 4 == 3)
         {
             maneuvers[i] = new Right();
-            colors[i] = sf::Color::Yellow;
+            // colors[i] = sf::Color::Yellow;
         }
-        else if (i % 6 == 4)
-        {
-            maneuvers[i] = new Random();
-            colors[i] = sf::Color::White;
-        }
-        else if (i % 6 == 5)
-        {
-            maneuvers[i] = new Still();
-            colors[i] = sf::Color::White;
-            float factor = 1.0f; // 50% of current color
-            sf::Uint8 g = static_cast<sf::Uint8>(std::min(255.0f, colors[i].g * factor));
-            sf::Uint8 r = static_cast<sf::Uint8>(std::min(255.0f, colors[i].r * factor));
-            sf::Uint8 b = static_cast<sf::Uint8>(std::min(255.0f, colors[i].b * factor));
-            colors[i] = sf::Color(r, g, b, colors[i].a); // Keep alpha the same
-        }
+        // else if (i % 5 == 4)
+        // {
+        //     maneuvers[i] = new Random();
+        //     // colors[i] = sf::Color::White;
+        // }
+        // else if (i % 6 == 5)
+        // {
+        //     maneuvers[i] = new Still();
+        //     colors[i] = sf::Color::White;
+        //     float factor = 1.0f; // 50% of current color
+        //     sf::Uint8 g = static_cast<sf::Uint8>(std::min(255.0f, colors[i].g * factor));
+        //     sf::Uint8 r = static_cast<sf::Uint8>(std::min(255.0f, colors[i].r * factor));
+        //     sf::Uint8 b = static_cast<sf::Uint8>(std::min(255.0f, colors[i].b * factor));
+        //     colors[i] = sf::Color(r, g, b, colors[i].a); // Keep alpha the same
+        // }
     }
 
     GameTactic *tactics[numAgents]; // array of tactics
+    char tacticNames[numAgents]; // array of tactic names
     for (int i = 0; i < numAgents; i++)
     {
-        if (i % 8 < 4)
+        if (i % 3 == 0)
         {
             tactics[i] = new Cooperate();
-            float factor = 1.0f; // 50% of current color
-            sf::Uint8 g = static_cast<sf::Uint8>(std::min(255.0f, colors[i].g * factor));
-            sf::Uint8 r = static_cast<sf::Uint8>(std::min(255.0f, colors[i].r * factor));
-            sf::Uint8 b = static_cast<sf::Uint8>(std::min(255.0f, colors[i].b * factor));
-            colors[i] = sf::Color(r, g, b, colors[i].a); // Keep alpha the same
+            // float factor = 1.0f; // 50% of current color
+            // sf::Color(
+            //     static_cast<sf::Uint8>(std::min(255.0f, colors[i].r * factor)),
+            //     static_cast<sf::Uint8>(std::min(255.0f, colors[i].g * factor)),
+            //     static_cast<sf::Uint8>(std::min(255.0f, colors[i].b * factor)),
+            //     colors[i].a // Keep alpha the same
+            // );
+            tacticNames[i] = 'c';
         }
-        else if (i % 8 >= 4)
+        else if (i % 3 == 1)
         {
             tactics[i] = new Defect();
-            float factor = 0.5f; // 100% of current color
-            sf::Uint8 g = static_cast<sf::Uint8>(std::min(255.0f, colors[i].g * factor));
-            sf::Uint8 r = static_cast<sf::Uint8>(std::min(255.0f, colors[i].r * factor));
-            sf::Uint8 b = static_cast<sf::Uint8>(std::min(255.0f, colors[i].b * factor));
-            colors[i] = sf::Color(r, g, b, colors[i].a); // Keep alpha the same
+            // float factor = 1.0f; // 100% of current color
+            // sf::Color(
+            //     static_cast<sf::Uint8>(std::min(255.0f, colors[i].r * factor)),
+            //     static_cast<sf::Uint8>(std::min(255.0f, colors[i].g * factor)),
+            //     static_cast<sf::Uint8>(std::min(255.0f, colors[i].b * factor)),
+            //     colors[i].a // Keep alpha the same
+            // );
+            tacticNames[i] = 'd';
+        }
+        else if (i % 3 == 2)
+        {
+            tactics[i] = new TitForTat(numAgents);
+            // float factor = 1.0f; // 100% of current color
+            // sf::Color(
+            //     static_cast<sf::Uint8>(std::min(255.0f, colors[i].r * factor)),
+            //     static_cast<sf::Uint8>(std::min(255.0f, colors[i].g * factor)),
+            //     static_cast<sf::Uint8>(std::min(255.0f, colors[i].b * factor)),
+            //     colors[i].a // Keep alpha the same
+            // );
+            tacticNames[i] = 't';
         }
     }
 
+    
 
 
     // game loop
@@ -200,6 +248,7 @@ int main()
                 window.close();
             }
         }
+        
         // add one agent each round, until the number of agents is reached
         if (round < numAgents)
         {
@@ -207,8 +256,11 @@ int main()
             physicsEngine.PushCircle(bodies[round], b2Vec2(1.f, 1.f));
         }
 
+        
+
         std::bitset<numAgents> collisions[numAgents] = {0}; // 0 means no collision, 1 means collision
 
+        
         // Update the physics
         b2Contact *contacts = physicsEngine.Step(1.f / 60.f, 8, 3);
 
@@ -236,16 +288,20 @@ int main()
                     uint64_t historyKey = ((uint64_t)round << 32) | ((uint64_t)id1 << 16) | id2;
 
                     // gaming and cooking, these four lines replaced like 50 lines of code
-                    bool choice1 = tactics[id1]->doTactic();
-                    bool choice2 = tactics[id2]->doTactic();
+                    bool choice1 = tactics[id1]->doTactic(id2);
+                    bool choice2 = tactics[id2]->doTactic(id1);
+
+                    // update agent behaviors if needed
+                    // if (tacticNames[id1] == 't')
+                    // {
+                    //     tactics[id1]->updateTactic(id2, choice2);
+                    // }
 
                     // Using the two choices, which do either 0 or 1, do a bitshift to make the history value
                     uint8_t gamestate = (choice1) << 1 | choice2;
 
                     // now we add to the history
                     history[historyKey] = gamestate;
-
-                    // std::cin.get();
 
                     scores[id1] += payoffMatrix[choice1][choice2][0];
                     scores[id2] += payoffMatrix[choice1][choice2][1];
@@ -264,11 +320,14 @@ int main()
                 }
             }
         }
+        
         // update the rendering engine
         renderingEngine.Update(window, bodies, colors, numAgents);
+
         round += 1;
     }
 
+    std::cout << "Ending program" << std::endl;
 
     // TODO: see the files in Data and generate a new name for a file
 
