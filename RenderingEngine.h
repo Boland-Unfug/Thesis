@@ -9,7 +9,7 @@
 class RenderingEngine {
 public:
     void DrawCircle(sf::RenderWindow &window, b2Body *body, sf::Color color); // Draw an agent
-    void Update(sf::RenderWindow &window, b2Body* bodies[], sf::Color colors[], int size); // Update the window with the new positions of the agents
+    void Update(sf::RenderWindow &window, b2Body* bodies[], int size); // Update the window with the new positions of the agents
     // TODO might add more drawing functions
 
 private:

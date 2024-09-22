@@ -38,7 +38,7 @@ int main()
     - add more game tactics
         - tit for tat
             - I can hand it an array of size [agentnum] full of 0's at instantiation
-            - I can then have  it take the agent it is playing and  reference the table for its move 
+            - I can then have  it take the agent it is playing and  reference the table for its move
         - tit for two tats
         - naive tit for tat
             - I can have it store just the last move
@@ -102,7 +102,41 @@ int main()
     So I will remove all randomness first and see if its still happens
     Cause: Titfortat
     probably because I store an array of 0's and ones, and with a lot of those I run into problems
+
+
+    I  think the current problem is systemic, where I store many things as arrays and that leads to stack overflows
+    tomarrow I will work on improving these memory issues, mostly via vectors
+    I will also look into improving the pointers vs references and other memory management techniques
+
+
+
+
+
+
+    THE DILEMMA:
+    two options:
+    - every tit for tat stores an array of 0's/1's that stores the last decision of a given agent
+    - hardcoding it worked SOB
+        - PROBLEM: memory?
+    - Every time I call tit for tat, I search through the history to find their last interaction and get the value
+        - PROBLEM: exponential time
+
+
+
+
+
     **/
+
+    // Constants
+    const int numAgents = 1000; // TODO make this dynamic later and also it must be divis by 8 for now
+    const unsigned char payoffMatrix[2][2][2] = {
+        // accessed via payoffMatrix[choice1][choice2][player]
+        {{1, 1}, {5, 0}},
+        {{0, 5}, {3, 3}}};
+
+    const float agentRadius = 0.5f;
+    const float window_x = 40.0f;
+    const float window_y = 30.0f;
 
     std::cout << "Starting program" << std::endl;
 
@@ -110,27 +144,19 @@ int main()
     RenderingEngine renderingEngine;
 
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(900.0f, 900.0f), "SFML window");
-    window.setFramerateLimit(60);
+    sf::RenderWindow window(sf::VideoMode(window_x * 30, window_y * 30), "SFML window");
+    window.setFramerateLimit(120);
 
     // Create a physics engine
     PhysicsEngine physicsEngine(b2Vec2(0.0f, 0.0f));
 
     // Create 4 walls
-    physicsEngine.CreateWall(b2Vec2(0.f, 0.f), b2Vec2(60.f, 1.f));
-    physicsEngine.CreateWall(b2Vec2(0.f, 0.f), b2Vec2(1.f, 60.f));
-    physicsEngine.CreateWall(b2Vec2(0.f, 30.f), b2Vec2(60.f, 1.f));
-    physicsEngine.CreateWall(b2Vec2(30.f, 0.f), b2Vec2(1.f, 60.f));
+    physicsEngine.CreateWall(b2Vec2(0.f, 0.f), b2Vec2(window_x * 2, 1.f));
+    physicsEngine.CreateWall(b2Vec2(0.f, 0.f), b2Vec2(1.f, window_y * 2));
+    physicsEngine.CreateWall(b2Vec2(0.f, window_y), b2Vec2(window_x * 2, 1.f));
+    physicsEngine.CreateWall(b2Vec2(window_x, 0.f), b2Vec2(1.f, window_y * 2));
 
-    // Constants
-    const int numAgents = 100; // TODO make this dynamic later
-    const float agentRadius = 0.5f;
-    const unsigned char payoffMatrix[2][2][2] = {
-        // accessed via payoffMatrix[choice1][choice2][player]
-        {{1, 1}, {5, 0}},
-        {{0, 5}, {3, 3}}};
-    const int speed_limiter = 1.0f;
-
+    std::cout << "Creating agents" << std::endl;
     // make the vectors of agents
     b2Body *bodies[numAgents]; // array of body pointers
     for (int i = 0; i < numAgents; i++)
@@ -138,222 +164,164 @@ int main()
         bodies[i] = nullptr;
     }
 
-    sf::Color colors[numAgents]; // array of colors (I want different colors available
-    for (int i = 0; i < numAgents; i++)
-    {
-        colors[i] = sf::Color::Red;
-    }
-
     int scores[numAgents] = {0}; // array of scores very unnecessary, I only care about history but thouroughness ig
 
     // Make the history array
     std::unordered_map<uint64_t, uint8_t> history;
 
-    GameManeuver *maneuvers[numAgents]; // array of maneuvers
+    std::vector<GameManeuver *> maneuvers; // array of maneuvers
+    char maneuverNames[numAgents];         // array of maneuver names
     for (int i = 0; i < numAgents; i++)
     {
-        if (i % 4 == 0)
+        switch (i % 4)
         {
-            maneuvers[i] = new Up();
-            // colors[i] = sf::Color::Red;
+        case 0:
+            maneuvers.push_back(new Up());
+            break;
+        case 1:
+            maneuvers.push_back(new Down());
+            break;
+        case 2:
+            maneuvers.push_back(new Left());
+            break;
+        case 3:
+            maneuvers.push_back(new Right());
+            break;
         }
-        else if (i % 4 == 1)
-        {
-            maneuvers[i] = new Down();
-            // colors[i] = sf::Color::Blue;
-        }
-        else if (i % 4 == 2)
-        {
-            maneuvers[i] = new Left();
-            // colors[i] = sf::Color::Green;
-        }
-        else if (i % 4 == 3)
-        {
-            maneuvers[i] = new Right();
-            // colors[i] = sf::Color::Yellow;
-        }
-        // else if (i % 5 == 4)
-        // {
-        //     maneuvers[i] = new Random();
-        //     // colors[i] = sf::Color::White;
-        // }
-        // else if (i % 6 == 5)
-        // {
-        //     maneuvers[i] = new Still();
-        //     colors[i] = sf::Color::White;
-        //     float factor = 1.0f; // 50% of current color
-        //     sf::Uint8 g = static_cast<sf::Uint8>(std::min(255.0f, colors[i].g * factor));
-        //     sf::Uint8 r = static_cast<sf::Uint8>(std::min(255.0f, colors[i].r * factor));
-        //     sf::Uint8 b = static_cast<sf::Uint8>(std::min(255.0f, colors[i].b * factor));
-        //     colors[i] = sf::Color(r, g, b, colors[i].a); // Keep alpha the same
-        // }
     }
 
-    GameTactic *tactics[numAgents]; // array of tactics
-    char tacticNames[numAgents]; // array of tactic names
+    std::vector<GameTactic *> tactics; // array of tactics
+    char tacticNames[numAgents];       // array of tactic names
     for (int i = 0; i < numAgents; i++)
     {
-        if (i % 3 == 0)
+        switch (i % 4)
         {
-            tactics[i] = new Cooperate();
-            // float factor = 1.0f; // 50% of current color
-            // sf::Color(
-            //     static_cast<sf::Uint8>(std::min(255.0f, colors[i].r * factor)),
-            //     static_cast<sf::Uint8>(std::min(255.0f, colors[i].g * factor)),
-            //     static_cast<sf::Uint8>(std::min(255.0f, colors[i].b * factor)),
-            //     colors[i].a // Keep alpha the same
-            // );
-            tacticNames[i] = 'c';
-        }
-        else if (i % 3 == 1)
-        {
-            tactics[i] = new Defect();
-            // float factor = 1.0f; // 100% of current color
-            // sf::Color(
-            //     static_cast<sf::Uint8>(std::min(255.0f, colors[i].r * factor)),
-            //     static_cast<sf::Uint8>(std::min(255.0f, colors[i].g * factor)),
-            //     static_cast<sf::Uint8>(std::min(255.0f, colors[i].b * factor)),
-            //     colors[i].a // Keep alpha the same
-            // );
+        case 0:
+            tactics.push_back(new Defect());
             tacticNames[i] = 'd';
-        }
-        else if (i % 3 == 2)
-        {
-            tactics[i] = new TitForTat(numAgents);
-            // float factor = 1.0f; // 100% of current color
-            // sf::Color(
-            //     static_cast<sf::Uint8>(std::min(255.0f, colors[i].r * factor)),
-            //     static_cast<sf::Uint8>(std::min(255.0f, colors[i].g * factor)),
-            //     static_cast<sf::Uint8>(std::min(255.0f, colors[i].b * factor)),
-            //     colors[i].a // Keep alpha the same
-            // );
+            break;
+        case 1:
+            tactics.push_back(new Cooperate());
+            tacticNames[i] = 'c';
+            break;
+        case 2:
+            tactics.push_back(new TitForTat(numAgents));
             tacticNames[i] = 't';
+            break;
+        case 3:
+            tactics.push_back(new NaiveTitForTat());
         }
-    }
 
-    
+        std::cout << "Starting game loop" << std::endl;
 
-
-    // game loop
-    uint32_t round = 0;
-    while (window.isOpen())
-    {
-        // Process events
-        sf::Event event;
-        while (window.pollEvent(event))
+        // game loop
+        uint32_t round = 0;
+        while (window.isOpen())
         {
-            // Close window: exit
-            if (event.type == sf::Event::Closed)
+            // Process events
+            sf::Event event;
+            while (window.pollEvent(event))
             {
-                window.close();
-            }
-        }
-        
-        // add one agent each round, until the number of agents is reached
-        if (round < numAgents)
-        {
-            bodies[round] = physicsEngine.CreateCircle(round, b2Vec2(1.0f, 1.0f), agentRadius);
-            physicsEngine.PushCircle(bodies[round], b2Vec2(1.f, 1.f));
-        }
-
-        
-
-        std::bitset<numAgents> collisions[numAgents] = {0}; // 0 means no collision, 1 means collision
-
-        
-        // Update the physics
-        b2Contact *contacts = physicsEngine.Step(1.f / 60.f, 8, 3);
-
-        if (round > numAgents)
-        {
-            for (b2Contact *contact = contacts; contact; contact = contact->GetNext())
-            {
-
-                uint16_t id1 = contact->GetFixtureA()->GetBody()->GetUserData().pointer;
-                uint16_t id2 = contact->GetFixtureB()->GetBody()->GetUserData().pointer;
-
-                // flip the ids if they are out of order
-                if (id1 > id2)
+                // Close window: exit
+                if (event.type == sf::Event::Closed)
                 {
-                    uint16_t temp = id1;
-                    id1 = id2;
-                    id2 = temp;
-                }
-
-                if (collisions[id1][id2] == 0)
-                { // don't start playing games until all agents exist
-                    collisions[id1][id2] = 1;
-
-                    // Using the round and agent id's, do a series of bitshifts to make the history key
-                    uint64_t historyKey = ((uint64_t)round << 32) | ((uint64_t)id1 << 16) | id2;
-
-                    // gaming and cooking, these four lines replaced like 50 lines of code
-                    bool choice1 = tactics[id1]->doTactic(id2);
-                    bool choice2 = tactics[id2]->doTactic(id1);
-
-                    // update agent behaviors if needed
-                    // if (tacticNames[id1] == 't')
-                    // {
-                    //     tactics[id1]->updateTactic(id2, choice2);
-                    // }
-
-                    // Using the two choices, which do either 0 or 1, do a bitshift to make the history value
-                    uint8_t gamestate = (choice1) << 1 | choice2;
-
-                    // now we add to the history
-                    history[historyKey] = gamestate;
-
-                    scores[id1] += payoffMatrix[choice1][choice2][0];
-                    scores[id2] += payoffMatrix[choice1][choice2][1];
+                    window.close();
                 }
             }
-
-            int round_divisor = 100; // TODO this might be resulting in a 0 force
-            if (round % round_divisor == 0)
+            std::cout<<"Round: "<<round<<std::endl;
+            // add one agent each round, until the number of agents is reached
+            if (round < numAgents)
             {
+                bodies[round] = physicsEngine.CreateCircle(round, b2Vec2(1.0f, 1.0f), agentRadius);
+                physicsEngine.PushCircle(bodies[round], b2Vec2(1.f, 1.f));
+            }
+
+            std::bitset<numAgents> collisions[numAgents] = {0}; // 0 means no collision, 1 means collision
+
+            bool draw = true;
+            bool play = true;
+            // Update the physics
+            b2Contact *contacts = physicsEngine.Step(1.f / 60.f, 8, 3);
+                std::cout<<" Flag 1"<<std::endl; // PICK UP HERE
+            if (round > numAgents && play == true)
+            {
+                for (b2Contact *contact = contacts; contact; contact = contact->GetNext())
+                {
+
+                    uint16_t id1 = contact->GetFixtureA()->GetBody()->GetUserData().pointer;
+                    uint16_t id2 = contact->GetFixtureB()->GetBody()->GetUserData().pointer;
+
+                    // flip the ids if they are out of order
+                    if (id1 > id2)
+                    {
+                        uint16_t temp = id1;
+                        id1 = id2;
+                        id2 = temp;
+                    }
+
+                    if (collisions[id1][id2] == 0)
+                    { // don't start playing games until all agents exist
+                        collisions[id1][id2] = 1;
+
+                        // Using the round and agent id's, do a series of bitshifts to make the history key
+                        uint64_t historyKey = ((uint64_t)round << 32) | ((uint64_t)id1 << 16) | id2;
+
+                        bool choice1 = tactics[id1]->doTactic(id2);
+                        bool choice2 = tactics[id2]->doTactic(id1);
+
+                        // Using the two choices, which do either 0 or 1, do a bitshift to make the history value
+                        uint8_t gamestate = (choice1) << 1 | choice2;
+
+                        // now we add to the history
+                        history[historyKey] = gamestate;
+
+                        scores[id1] += payoffMatrix[choice1][choice2][0];
+                        scores[id2] += payoffMatrix[choice1][choice2][1];
+                    }
+                }
+
                 for (int i = 0; i < numAgents; i++)
                 {
                     b2Vec2 force = maneuvers[i]->doManeuver();
-                    force *= (round_divisor * 1 / 100);
-                    // will have to check for speed later TODO
                     physicsEngine.PushCircle(bodies[i], force);
                 }
             }
+            // update the rendering engine
+            if (draw == true)
+            {
+                renderingEngine.Update(window, bodies, numAgents);
+            }
+
+            round += 1;
         }
-        
-        // update the rendering engine
-        renderingEngine.Update(window, bodies, colors, numAgents);
 
-        round += 1;
+        std::cout << "Ending program" << std::endl;
+
+        // TODO: see the files in Data and generate a new name for a file
+
+        // if the file exists, delete it
+        std::string filename = "../Data/history.csv";
+
+        std::remove(filename.c_str());
+
+        // Create and open a text file
+        std::ofstream MyFile(filename);
+
+        // Write to the file
+        MyFile << "Key,Value" << std::endl;
+        for (const auto &pair : history)
+        {
+            MyFile << pair.first << "," << pair.second << std::endl;
+        }
+
+        // Close the file
+        MyFile.close();
+
+        // print out the highest score
+        int highestScore = std::max_element(std::begin(scores), std::end(scores)) - std::begin(scores);
+        // also get its array position
+        std::cout << "Agent " << highestScore << " got " << scores[highestScore] << std::endl;
+
+        return 0;
     }
-
-    std::cout << "Ending program" << std::endl;
-
-    // TODO: see the files in Data and generate a new name for a file
-
-    
-    // if the file exists, delete it
-    std::string filename = "../Data/history.csv";
-
-    std::remove(filename.c_str());
-
-    // Create and open a text file
-    std::ofstream MyFile(filename);
-
-    // Write to the file
-    MyFile << "Key,Value" << std::endl;
-    for (const auto &pair : history)
-    {
-        MyFile << pair.first << "," << pair.second << std::endl;
-    }
-
-    // Close the file
-    MyFile.close();
-
-    // print out the highest score
-    int highestScore = std::max_element(std::begin(scores), std::end(scores)) - std::begin(scores);
-    // also get its array position
-    std::cout << "Agent " << highestScore << " got " << scores[highestScore] << std::endl;
-
-    return 0;
 }

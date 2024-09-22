@@ -12,7 +12,7 @@ class Up : public GameManeuver
     public:
         Up() = default;
         b2Vec2 doManeuver() const override {
-            return b2Vec2(0.0f, -1.0f);};
+            return b2Vec2(0.0f, -0.01f);};
 };
 
 class Down : public GameManeuver
@@ -20,7 +20,7 @@ class Down : public GameManeuver
     public:
         Down() = default;
         b2Vec2 doManeuver() const override {
-            return b2Vec2(0.0f, 1.0f);};
+            return b2Vec2(0.0f, 0.01f);};
 };
 
 class Left : public GameManeuver
@@ -28,7 +28,7 @@ class Left : public GameManeuver
     public:
         Left() = default;
         b2Vec2 doManeuver() const override {
-            return b2Vec2(-1.0f, 0.0f);};
+            return b2Vec2(-0.01f, 0.0f);};
 };
 
 class Right : public GameManeuver
@@ -36,7 +36,7 @@ class Right : public GameManeuver
     public:
         Right() = default;
         b2Vec2 doManeuver() const override {
-            return b2Vec2(1.0f, 0.0f);};
+            return b2Vec2(0.01f, 0.0f);};
 };
 
 class Random : public GameManeuver

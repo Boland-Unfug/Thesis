@@ -20,23 +20,20 @@ void RenderingEngine::DrawCircle(sf::RenderWindow &window, b2Body *body, sf::Col
     window.draw(circle);
 };
 
-void RenderingEngine::Update(sf::RenderWindow &window, b2Body* bodies[], sf::Color colors[], int size)
+void RenderingEngine::Update(sf::RenderWindow &window, b2Body* bodies[], int size)
 {
+
 
     // clear the window
     window.clear();
-
-    std::cout<<" Flag 1"<<std::endl;
     // Draw the circles
     for (int i = 0; i < (size - 1); i++)
     {
-        std::cout<<" Flag 2"<<std::endl;
-        if (bodies[i] != nullptr){
-            std::cout<<" Flag 3"<<std::endl;
-            RenderingEngine::DrawCircle(window, bodies[i], colors[i]);};
+        // std::cout<<" Flag 2"<<std::endl;
+        if (bodies[i] != nullptr){ // lets me do the feed in effect
+            // std::cout<<" Flag 3"<<std::endl;
+            RenderingEngine::DrawCircle(window, bodies[i], sf::Color::Red);};
     }
-    std::cout<<" Flag 4"<<std::endl;
     // Update the window
     window.display(); // here is the error???
-    std::cout<<" Flag 5"<<std::endl;
 }
