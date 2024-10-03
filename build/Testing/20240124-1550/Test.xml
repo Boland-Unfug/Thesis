@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Win32-mingw32-make"
+	BuildStamp="20240124-1550-Experimental"
+	Name="boogletop-0"
+	Generator="ctest-3.28.1"
+	CompilerName="C:/Users/boogl/.vscode-insiders/Projects/mingw64/bin/clang++.exe"
+	CompilerVersion="17.0.5"
+	OSName="Windows"
+	Hostname="boogletop-0"
+	OSRelease=" Personal"
+	OSVersion=" (Build 22621)"
+	OSPlatform="AMD64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="5"
+	ProcessorCacheSize="-1"
+	NumberOfLogicalCPU="12"
+	NumberOfPhysicalCPU="6"
+	TotalVirtualMemory="38694"
+	TotalPhysicalMemory="16166"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="2592"
+	>
+	<Testing>
+		<StartDateTime>Jan 24 15:03 Eastern Standard Time</StartDateTime>
+		<StartTestTime>1706126611</StartTestTime>
+		<TestList/>
+		<EndDateTime>Jan 24 15:03 Eastern Standard Time</EndDateTime>
+		<EndTestTime>1706126611</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

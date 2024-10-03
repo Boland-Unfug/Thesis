@@ -8,7 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/boogl/.vscode-insiders/Projects/Test 2/main.cpp" "CMakeFiles/MySFMLProject.dir/main.cpp.obj" "gcc" "CMakeFiles/MySFMLProject.dir/main.cpp.obj.d"
+  "C:/Users/boogl/.vscode-insiders/Projects/Thesis/PhysicsEngine.cpp" "CMakeFiles/MySFMLProject.dir/PhysicsEngine.cpp.obj" "gcc" "CMakeFiles/MySFMLProject.dir/PhysicsEngine.cpp.obj.d"
+  "C:/Users/boogl/.vscode-insiders/Projects/Thesis/RenderingEngine.cpp" "CMakeFiles/MySFMLProject.dir/RenderingEngine.cpp.obj" "gcc" "CMakeFiles/MySFMLProject.dir/RenderingEngine.cpp.obj.d"
+  "C:/Users/boogl/.vscode-insiders/Projects/Thesis/main.cpp" "CMakeFiles/MySFMLProject.dir/main.cpp.obj" "gcc" "CMakeFiles/MySFMLProject.dir/main.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
