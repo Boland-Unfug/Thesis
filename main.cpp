@@ -120,21 +120,40 @@ int main()
         - PROBLEM: memory?
     - Every time I call tit for tat, I search through the history to find their last interaction and get the value
         - PROBLEM: exponential time
+    - A mix of the two: a matrix that stores the last move between two agents and can be referenced, its a mix of the two and should work well
 
+    Currently it loads everything, but when something happens at round 1001 (gaming) it breaks
+    Next goal is to find that
 
+    Also for reducing memory more, now that I have a global history implementing bitshifts should be easier
 
+    I need to literally take everything and find as many ways as possible to reduce their memory.
+    One matrix of arrays stores only 0's and 1's - how can I make that more efficient? (bits? pointers?)
+    Remove the score array (I can recunstruct it from history later)
 
+    TODO: 10/3/2024
+    graphs
+        Average
+        Individual?
+        grouping
+    
+    Extendibility
+        command line args
+        game class
+        init class
+
+    
 
     **/
 
     // Constants
-    const int numAgents = 1000; // TODO make this dynamic later and also it must be divis by 8 for now
+    const int numAgents = 10; // TODO make this dynamic later and also it must be divis by 8 for now
     const unsigned char payoffMatrix[2][2][2] = {
         // accessed via payoffMatrix[choice1][choice2][player]
         {{1, 1}, {5, 0}},
         {{0, 5}, {3, 3}}};
 
-    const float agentRadius = 0.5f;
+    const float agentRadius = 0.3f;
     const float window_x = 40.0f;
     const float window_y = 30.0f;
 
@@ -164,13 +183,11 @@ int main()
         bodies[i] = nullptr;
     }
 
-    int scores[numAgents] = {0}; // array of scores very unnecessary, I only care about history but thouroughness ig
-
     // Make the history array
     std::unordered_map<uint64_t, uint8_t> history;
-
-    std::vector<GameManeuver *> maneuvers; // array of maneuvers
-    char maneuverNames[numAgents];         // array of maneuver names
+    std::bitset<numAgents> games[numAgents] = {0}; // temporary history LARGE ARRAY
+    std::vector<GameManeuver *> maneuvers;         // array of maneuvers
+    char maneuverNames[numAgents];                 // array of maneuver names
     for (int i = 0; i < numAgents; i++)
     {
         switch (i % 4)
@@ -205,123 +222,149 @@ int main()
             tacticNames[i] = 'c';
             break;
         case 2:
-            tactics.push_back(new TitForTat(numAgents));
+            tactics.push_back(new TitForTat());
             tacticNames[i] = 't';
             break;
         case 3:
             tactics.push_back(new NaiveTitForTat());
+            tacticNames[i] = 'n';
         }
-
-        std::cout << "Starting game loop" << std::endl;
-
-        // game loop
-        uint32_t round = 0;
-        while (window.isOpen())
-        {
-            // Process events
-            sf::Event event;
-            while (window.pollEvent(event))
-            {
-                // Close window: exit
-                if (event.type == sf::Event::Closed)
-                {
-                    window.close();
-                }
-            }
-            std::cout<<"Round: "<<round<<std::endl;
-            // add one agent each round, until the number of agents is reached
-            if (round < numAgents)
-            {
-                bodies[round] = physicsEngine.CreateCircle(round, b2Vec2(1.0f, 1.0f), agentRadius);
-                physicsEngine.PushCircle(bodies[round], b2Vec2(1.f, 1.f));
-            }
-
-            std::bitset<numAgents> collisions[numAgents] = {0}; // 0 means no collision, 1 means collision
-
-            bool draw = true;
-            bool play = true;
-            // Update the physics
-            b2Contact *contacts = physicsEngine.Step(1.f / 60.f, 8, 3);
-                std::cout<<" Flag 1"<<std::endl; // PICK UP HERE
-            if (round > numAgents && play == true)
-            {
-                for (b2Contact *contact = contacts; contact; contact = contact->GetNext())
-                {
-
-                    uint16_t id1 = contact->GetFixtureA()->GetBody()->GetUserData().pointer;
-                    uint16_t id2 = contact->GetFixtureB()->GetBody()->GetUserData().pointer;
-
-                    // flip the ids if they are out of order
-                    if (id1 > id2)
-                    {
-                        uint16_t temp = id1;
-                        id1 = id2;
-                        id2 = temp;
-                    }
-
-                    if (collisions[id1][id2] == 0)
-                    { // don't start playing games until all agents exist
-                        collisions[id1][id2] = 1;
-
-                        // Using the round and agent id's, do a series of bitshifts to make the history key
-                        uint64_t historyKey = ((uint64_t)round << 32) | ((uint64_t)id1 << 16) | id2;
-
-                        bool choice1 = tactics[id1]->doTactic(id2);
-                        bool choice2 = tactics[id2]->doTactic(id1);
-
-                        // Using the two choices, which do either 0 or 1, do a bitshift to make the history value
-                        uint8_t gamestate = (choice1) << 1 | choice2;
-
-                        // now we add to the history
-                        history[historyKey] = gamestate;
-
-                        scores[id1] += payoffMatrix[choice1][choice2][0];
-                        scores[id2] += payoffMatrix[choice1][choice2][1];
-                    }
-                }
-
-                for (int i = 0; i < numAgents; i++)
-                {
-                    b2Vec2 force = maneuvers[i]->doManeuver();
-                    physicsEngine.PushCircle(bodies[i], force);
-                }
-            }
-            // update the rendering engine
-            if (draw == true)
-            {
-                renderingEngine.Update(window, bodies, numAgents);
-            }
-
-            round += 1;
-        }
-
-        std::cout << "Ending program" << std::endl;
-
-        // TODO: see the files in Data and generate a new name for a file
-
-        // if the file exists, delete it
-        std::string filename = "../Data/history.csv";
-
-        std::remove(filename.c_str());
-
-        // Create and open a text file
-        std::ofstream MyFile(filename);
-
-        // Write to the file
-        MyFile << "Key,Value" << std::endl;
-        for (const auto &pair : history)
-        {
-            MyFile << pair.first << "," << pair.second << std::endl;
-        }
-
-        // Close the file
-        MyFile.close();
-
-        // print out the highest score
-        int highestScore = std::max_element(std::begin(scores), std::end(scores)) - std::begin(scores);
-        // also get its array position
-        std::cout << "Agent " << highestScore << " got " << scores[highestScore] << std::endl;
-
-        return 0;
     }
+
+    std::cout << "Starting game loop" << std::endl;
+
+    // game loop TODO: Go through the whole loop to really make sure it all does what I want
+    uint32_t round = 0;
+    while (window.isOpen())
+    {
+        // Process events
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            // Close window: exit
+            if (event.type == sf::Event::Closed || round > numAgents + 1)
+            {
+                window.close();
+            }
+        }
+        std::cout << "Round: " << round << std::endl;
+        // add one agent each round, until the number of agents is reached
+        if (round < numAgents)
+        {
+            bodies[round] = physicsEngine.CreateCircle(round, b2Vec2(1.0f, 1.0f), agentRadius);
+            physicsEngine.PushCircle(bodies[round], b2Vec2(1.f, 1.f));
+        }
+
+        // LARGE ARRAY
+        std::bitset<numAgents> collisions[numAgents] = {0}; // 0 means no collision, 1 means collision
+
+        bool draw = true;
+        bool play = true;
+        // Update the physics
+        b2Contact *contacts = physicsEngine.Step(1.f / 60.f, 8, 3);
+
+        if (round > numAgents && play == true)
+        {
+            for (b2Contact *contact = contacts; contact; contact = contact->GetNext())
+            {
+
+                uint16_t id1 = contact->GetFixtureA()->GetBody()->GetUserData().pointer;
+                uint16_t id2 = contact->GetFixtureB()->GetBody()->GetUserData().pointer;
+
+                // flip the ids if they are out of order
+                if (id1 > id2)
+                {
+                    uint16_t temp = id1;
+                    id1 = id2;
+                    id2 = temp;
+                }
+
+                if (collisions[id1][id2] == 0)
+                { // don't start playing games until all agents exist
+                    collisions[id1][id2] = 1;
+
+                    std::printf("Collision between agents %d and %d\n", id1, id2);
+                    // Using the round and agent id's, do a series of bitshifts to make the history key
+                    uint64_t historyKey = ((uint64_t)round << 32) | ((uint64_t)id1 << 16) | id2;
+
+                    if (tacticNames[id1] == 't')
+                    {
+                        // std::cout<< "Updating tactic, they played" << choice1 << std::endl;
+                        tactics[id1]->updateTactic(id2, games[id2][id1]);
+                    }
+                    if (tacticNames[id2] == 't')
+                    {
+                        // std::cout<< "Updating tactic, they played" << choice2 << std::endl;
+                        tactics[id2]->updateTactic(id1, games[id1][id2]);
+                    }
+
+                    // get the choices from the tactics
+                    bool choice1 = tactics[id1]->doTactic(id2);
+                    bool choice2 = tactics[id2]->doTactic(id1);
+
+
+
+                    // add these to the last game reference array
+                    games[id1][id2] = choice2;
+                    games[id2][id1] = choice1;
+
+                    // update the tactics but I have to do this before
+                    if (tacticNames[id1] == 'n')
+                    {
+                        // std::cout<< "Updating tactic, they played" << choice1 << std::endl;
+                        tactics[id1]->updateTactic(id2, choice2);
+                    }
+                    if (tacticNames[id2] == 'n')
+                    {
+                        // std::cout<< "Updating tactic, they played" << choice2 << std::endl;
+                        tactics[id2]->updateTactic(id1, choice1);
+                    }
+
+                    // Using the two choices, which do either 0 or 1, do a bitshift to make the history value
+                    uint8_t gamestate = (choice1) << 1 | choice2;
+
+                    // now we add to the history
+                    history[historyKey] = gamestate;
+                }
+            }
+
+            for (int i = 0; i < numAgents; i++)
+            {
+                b2Vec2 force = maneuvers[i]->doManeuver();
+                physicsEngine.PushCircle(bodies[i], force);
+            }
+        }
+        // update the rendering engine
+        if (draw == true)
+        {
+            renderingEngine.Update(window, bodies, numAgents);
+        }
+
+        round += 1;
+    }
+
+    std::cout << "Ending program" << std::endl;
+
+    // TODO: see the files in Data and generate a new name for a file
+
+    // if the file exists, delete it
+    std::string filename = "../Data/history.csv";
+
+    std::remove(filename.c_str());
+
+    // Create and open a text file
+    std::ofstream MyFile(filename);
+
+    // Write to the file
+    MyFile << "Key,Value" << std::endl;
+    for (const auto &pair : history)
+    {
+        MyFile << pair.first << "," << (int)pair.second << std::endl;
+    }
+
+    // Close the file
+    MyFile.close();
+
+    return 0;
 }
+
