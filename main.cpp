@@ -142,8 +142,11 @@ int main()
         game class
         init class
 
-    
-
+    Tidying
+        add comments
+        standardize variable naming conventions
+        fix warnings
+        fix test 2 bug
     **/
 
     // Constants
@@ -194,15 +197,19 @@ int main()
         {
         case 0:
             maneuvers.push_back(new Up());
+            maneuverNames[i] = 'u';
             break;
         case 1:
             maneuvers.push_back(new Down());
+            maneuverNames[i] = 'd';
             break;
         case 2:
             maneuvers.push_back(new Left());
+            maneuverNames[i] = 'l';
             break;
         case 3:
             maneuvers.push_back(new Right());
+            maneuverNames[i] = 'r';
             break;
         }
     }
@@ -349,11 +356,14 @@ int main()
 
     // if the file exists, delete it
     std::string filename = "../Data/history.csv";
+    std::string gamesettings = "../Data/gamesettings.csv";
 
     std::remove(filename.c_str());
+    std::remove(gamesettings.c_str());
 
     // Create and open a text file
     std::ofstream MyFile(filename);
+    std::ofstream GameSettings(gamesettings);
 
     // Write to the file
     MyFile << "Key,Value" << std::endl;
@@ -362,8 +372,15 @@ int main()
         MyFile << pair.first << "," << (int)pair.second << std::endl;
     }
 
+    GameSettings << "Agent,Maneuver,Tactic" << std::endl;
+    for (int i = 0; i < numAgents; i++)
+    {
+        GameSettings << i << "," << maneuverNames[i] << "," << tacticNames[i] << std::endl;
+    }
+
     // Close the file
     MyFile.close();
+    GameSettings.close();
 
     return 0;
 }
