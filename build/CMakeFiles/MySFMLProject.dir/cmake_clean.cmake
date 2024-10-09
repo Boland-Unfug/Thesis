@@ -1,8 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/MySFMLProject.dir/PhysicsEngine.cpp.obj"
-  "CMakeFiles/MySFMLProject.dir/PhysicsEngine.cpp.obj.d"
-  "CMakeFiles/MySFMLProject.dir/RenderingEngine.cpp.obj"
-  "CMakeFiles/MySFMLProject.dir/RenderingEngine.cpp.obj.d"
   "CMakeFiles/MySFMLProject.dir/main.cpp.obj"
   "CMakeFiles/MySFMLProject.dir/main.cpp.obj.d"
   "MySFMLProject.exe"

@@ -148,54 +148,6 @@ MySFMLProject/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\MySFMLProject.dir\build.make CMakeFiles/MySFMLProject.dir/build
 .PHONY : MySFMLProject/fast
 
-PhysicsEngine.obj: PhysicsEngine.cpp.obj
-.PHONY : PhysicsEngine.obj
-
-# target to build an object file
-PhysicsEngine.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MySFMLProject.dir\build.make CMakeFiles/MySFMLProject.dir/PhysicsEngine.cpp.obj
-.PHONY : PhysicsEngine.cpp.obj
-
-PhysicsEngine.i: PhysicsEngine.cpp.i
-.PHONY : PhysicsEngine.i
-
-# target to preprocess a source file
-PhysicsEngine.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MySFMLProject.dir\build.make CMakeFiles/MySFMLProject.dir/PhysicsEngine.cpp.i
-.PHONY : PhysicsEngine.cpp.i
-
-PhysicsEngine.s: PhysicsEngine.cpp.s
-.PHONY : PhysicsEngine.s
-
-# target to generate assembly for a file
-PhysicsEngine.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MySFMLProject.dir\build.make CMakeFiles/MySFMLProject.dir/PhysicsEngine.cpp.s
-.PHONY : PhysicsEngine.cpp.s
-
-RenderingEngine.obj: RenderingEngine.cpp.obj
-.PHONY : RenderingEngine.obj
-
-# target to build an object file
-RenderingEngine.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MySFMLProject.dir\build.make CMakeFiles/MySFMLProject.dir/RenderingEngine.cpp.obj
-.PHONY : RenderingEngine.cpp.obj
-
-RenderingEngine.i: RenderingEngine.cpp.i
-.PHONY : RenderingEngine.i
-
-# target to preprocess a source file
-RenderingEngine.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MySFMLProject.dir\build.make CMakeFiles/MySFMLProject.dir/RenderingEngine.cpp.i
-.PHONY : RenderingEngine.cpp.i
-
-RenderingEngine.s: RenderingEngine.cpp.s
-.PHONY : RenderingEngine.s
-
-# target to generate assembly for a file
-RenderingEngine.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MySFMLProject.dir\build.make CMakeFiles/MySFMLProject.dir/RenderingEngine.cpp.s
-.PHONY : RenderingEngine.cpp.s
-
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -231,12 +183,6 @@ help:
 	@echo ... package_source
 	@echo ... rebuild_cache
 	@echo ... MySFMLProject
-	@echo ... PhysicsEngine.obj
-	@echo ... PhysicsEngine.i
-	@echo ... PhysicsEngine.s
-	@echo ... RenderingEngine.obj
-	@echo ... RenderingEngine.i
-	@echo ... RenderingEngine.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

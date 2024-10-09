@@ -4,7 +4,7 @@
 #include "GameTactic.h"
 #include <iostream>
 
-class Defect : public GameTactic
+class Defect : public GameTactic // represented by 'd'
 {
 public:
     Defect() = default;
@@ -12,7 +12,7 @@ public:
     void updateTactic(uint16_t opponent, bool oppchoice) override {}; // I think useless? but necessary?
 };
 
-class Cooperate : public GameTactic
+class Cooperate : public GameTactic // represented by 'c'
 {
 public:
     Cooperate() = default;
@@ -20,7 +20,7 @@ public:
     void updateTactic(uint16_t opponent, bool oppchoice) override {}; // I think useless? but necessary?
 };
 
-class TitForTat : public GameTactic // Tehee these are identical but get treated differently
+class TitForTat : public GameTactic // represented by 't'
 {
 public:
     bool oppchoice = 0;
@@ -36,7 +36,7 @@ public:
     };
 };
 
-class NaiveTitForTat : public GameTactic
+class NaiveTitForTat : public GameTactic // represented by 'n'
 {
 public:
     bool oppchoice = 0;
