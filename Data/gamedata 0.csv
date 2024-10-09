@@ -1,8 +1,9 @@
 Setting, Value
 draw, 1
 play, 1
-numAgents, 100
-agentRadius, 0.5
+numAgents, 1000
+agentRadius, 0.3
+maxrounds,10000
 gravity, 0,0
 timeStep, 0.0166667
 velocityIterations, 6

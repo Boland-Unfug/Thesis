@@ -393,10 +393,10 @@ int main()
     }
 
     // write the agents
-    agentFile << "Agent, Maneuver, Tactic" << std::endl;
+    agentFile << "Agent, Maneuver,Fill, Tactic, Outline" << std::endl;
     for (int i = 0; i < numAgents; i++)
     {
-        agentFile << i << "," << maneuverNames[i] << "," << tacticNames[i] << std::endl;
+        agentFile << i << "," << maneuverNames[i] << "," << fill[i].toInteger() << "," << tacticNames[i] << "," << outline[i].toInteger() << std::endl;
     }
 
     // write the games
