@@ -27,6 +27,7 @@ def make_history(data, settings):
 
     # make agant1 maneuvers, agent2 maneuvers, agent 1 tactics, and agent2 tactics columns
     for i in range(len(data)):
+        print("gottem")
         data.loc[i, 'Agent1maneuvers'] = settings.loc[data.loc[i, 'Agent1'], 'Maneuver']
         data.loc[i, 'Agent2maneuvers'] = settings.loc[data.loc[i, 'Agent2'], 'Maneuver']
         data.loc[i, 'Agent1tactics'] = settings.loc[data.loc[i, 'Agent1'], 'Tactic']
@@ -55,7 +56,7 @@ def make_score_history(data, settings):
 
     # get the number of agents
     num_agents = len(settings)
-    agents = settings['Agent'].values
+    agents = settings['numAgents'].values
 
     # make a dataframe of size max - min X num_agents
     # initialize the scores to 0
@@ -110,8 +111,9 @@ def plot_scores(scores, settings):
 
 
 # Load the data
-history = pd.read_csv('Data/history.csv')
-settings = pd.read_csv('Data/gamesettings.csv')
+history = pd.read_csv('Data/historydata 0.csv')
+settings = pd.read_csv('Data/gamedata 0.csv')
+agents = pd.read_csv('Data/agentdata 0.csv')
 history = make_history(history, settings)
 scores = make_score_history(history, settings)
 plot_scores(scores, settings)

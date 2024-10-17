@@ -338,8 +338,10 @@ CMakeFiles/MySFMLProject.dir/main.cpp.obj: \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/unique_ptr.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/fs_dir.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/fs_ops.h \
-  C:/Users/boogl/.vscode-insiders/Projects/Thesis/GameManeuvers.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/iostream \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/array \
+  C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/compare \
+  C:/Users/boogl/.vscode-insiders/Projects/Thesis/GameManeuvers.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/random \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/bits/random.h \
   C:/Users/boogl/.vscode-insiders/Projects/mingw64/include/c++/13.2.0/x86_64-w64-mingw32/bits/opt_random.h \

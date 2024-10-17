@@ -1,9 +1,25 @@
 Wow I am pretty much done...
 Le FINAL todo list:
-Make commandline interactible for settings
+Make interactible from terminal
  - make agent constructors that can be drawn from via commands
  - turn into classes instead of all in main, don't forget defaults
-    
+    - extract main into classes
+    - initialization class
+    - Draw engine
+    - Physics engine
+    - Game engine
+ - upload from file
+
+Finish graphing
+ - agent scores in chronological order
+    - color code by maneuver
+    - color code by tactic
+
+Tidying
+ - add comments
+ - standardize variable naming conventions
+ - fix warnings
+ - fix test 2 bug
     
     The rendering should not be a problem, loaded 100000 in ~1 second
 
@@ -12,29 +28,28 @@ Make commandline interactible for settings
         - make the functions more flexible
         - add nodraw option
         - make strategies and maneuvers customizable
-    - improve the file writing to store different games
+    - improve the file writing to store different games DONE
     - add python data analysis
-        - add tag array
-        - save to a seperate file
-        - oh no it converts the data wrong in python
-        - try converting to int before storing in file
-    - Make the tactic and maneuver initialization process better
-        - ensure the same amounts of each agent or at least have that be an option
+        - add tag array DONE
+        - save to a seperate file DONE
+        - oh no it converts the data wrong in python DONE
+        - try converting to int before storing in file DONE
+    - Make the tactic and maneuver initialization process better DONE
+        - ensure the same amounts of each agent or at least have that be an option DONE
         - make the code more dense if possible
     - add more game tactics
-        - tit for tat
+        - tit for tat DONE
             - I can hand it an array of size [agentnum] full of 0's at instantiation
             - I can then have  it take the agent it is playing and  reference the table for its move
         - tit for two tats
-        - naive tit for tat
+        - naive tit for tat DONE
             - I can have it store just the last move
             - I am going to need a spot to update behaviours after they make their moves
-    - make tactics the color
-    - add more game maneuvers
-        - chase
-        - flee
-        - move to center
-    - make maneuvers the color modification
+    - make tactics the color DONE
+    - add more game maneuvers DONE
+        - chase DONE
+        - flee DONE
+    - make maneuvers the color modification DONE
 
 
 

@@ -5,6 +5,8 @@
 #include <bitset>
 #include <fstream>
 #include <filesystem>
+#include <iostream>
+#include <array>
 
 #include "GameManeuvers.h"
 #include "GameTactics.h"
@@ -47,36 +49,198 @@ b2Body *CreateCircle(b2World *world, int id, const b2Vec2 &position, float radiu
     return body;
 }
 
+b2Vec2 ApplyAccelerationCap(b2Vec2 force, float accelerationCap)
+{
+    if (force.Length() > accelerationCap)
+    {
+        force.Normalize();
+        force *= accelerationCap;
+    }
+    return force;
+}
+
+b2Vec2 ApplySpeedCap(b2Vec2 velocity, float speedCap)
+{
+    
+    return velocity;
+}
+
 int main()
 {
-
-    // constants
-    const bool draw = true;
-    const bool play = true;
+        // constants
+    bool tempdraw = true;
+    bool tempplay = true;
     // const bool doManeuvers = true; // TODO: implement this
     // const bool doTactics = true; // TODO: implement this
-    const int numAgents = 1000; // TODO: make this dynamic
-    const float agentRadius = 0.3f;
-    const int maxRounds = 10000;
+    int tempnumAgents = 1000; // TODO: make this dynamic
+    float tempagentRadius = 0.3f;
+    int tempmaxRounds = 10000;
 
     // physics constants
-    const b2Vec2 gravity(0.0f, 0.0f);
-    const float timeStep = 1.0f / 60.0f;
-    const int32 velocityIterations = 6;
-    const int32 positionIterations = 2;
-    const float density = 1.0f;
-    const float friction = 0.3f;
-    const float restitution = 0.5f;
-    const b2Vec2 startPosition = b2Vec2(1.0f, 1.0f);
-    const b2Vec2 startForce = b2Vec2(1.0f, 1.0f);
-    const float speedCap = 1.0f;
-    const float accelerationCap = 0.05f;
+    b2Vec2 tempgravity(0.0f, 0.0f);
+    float temptimeStep = 1.0f / 60.0f;
+    int32 tempvelocityIterations = 6;
+    int32 temppositionIterations = 2;
+    float tempdensity = 1.0f;
+    float tempfriction = 0.3f;
+    float temprestitution = 0.5f;
+    b2Vec2 tempstartPosition = b2Vec2(1.0f, 1.0f);
+    b2Vec2 tempstartForce = b2Vec2(1.0f, 1.0f);
+    float tempspeedCap = 1.0f;
+    float tempaccelerationCap = 0.05f;
 
     // rendering constants
+    int tempSCALE = 30.0f;
+    int tempwindow_x = 40.0f;
+    int tempwindow_y = 30.0f;
+    int tempframeRate = 120;
+
+    // read in the constants from the config file
+    std::ifstream configInFile("../Configs/settings.csv");
+
+    std::string line;
+    // ignore the first line
+    std::getline(configInFile, line);
+    // Read the file line by line
+    while (std::getline(configInFile, line))
+    {
+        std::stringstream ss(line); // Convert line to a stream for further processing
+
+        // Split the line into comma-separated values
+        std::string col1, col2;
+
+        // Get the values from the two columns
+        std::getline(ss, col1, ','); // Read first column
+        std::getline(ss, col2, ','); // Read second column
+
+        // next steps: convert col 1 to integer?, columns 2 and 3 will associate with an agent maneuver and tactic object type
+        // create the agent
+        if (col1 == "draw")
+        {
+            tempdraw = std::stoi(col2);
+        }
+        else if (col1 == "play")
+        {
+            tempplay = std::stoi(col2);
+        }
+        else if (col1 == "numAgents")
+        {
+            tempnumAgents = std::stoi(col2);
+        }
+        else if (col1 == "agentRadius")
+        {
+            tempagentRadius = std::stof(col2);
+        }
+        else if (col1 == "maxRounds")
+        {
+            tempmaxRounds = std::stoi(col2);
+        }
+        else if (col1 == "gravityX")
+        {
+            tempgravity.x = std::stof(col2);
+        }
+        else if (col1 == "gravityY")
+        {
+            tempgravity.y = std::stof(col2);
+        }
+        else if (col1 == "timeStep")
+        {
+            temptimeStep = std::stof(col2);
+        }
+        else if (col1 == "velocityIterations")
+        {
+            tempvelocityIterations = std::stoi(col2);
+        }
+        else if (col1 == "positionIterations")
+        {
+            temppositionIterations = std::stoi(col2);
+        }
+        else if (col1 == "density")
+        {
+            tempdensity = std::stof(col2);
+        }
+        else if (col1 == "friction")
+        {
+            tempfriction = std::stof(col2);
+        }
+        else if (col1 == "restitution")
+        {
+            temprestitution = std::stof(col2);
+        }
+        else if (col1 == "startPositionX")
+        {
+            tempstartPosition.x = std::stof(col2);
+        }
+        else if (col1 == "startPositionY")
+        {
+            tempstartPosition.y = std::stof(col2);
+        }
+        else if (col1 == "startForceX")
+        {
+            tempstartForce.x = std::stof(col2);
+        }
+        else if (col1 == "startForceY")
+        {
+            tempstartForce.y = std::stof(col2);
+        }
+        else if (col1 == "speedCap")
+        {
+            tempspeedCap = std::stof(col2);
+        }
+        else if (col1 == "accelerationCap")
+        {
+            tempaccelerationCap = std::stof(col2);
+        }
+        else if (col1 == "window_x")
+        {
+            tempwindow_x = std::stoi(col2);
+        }
+        else if (col1 == "window_y")
+        {
+            tempwindow_y = std::stoi(col2);
+        }
+        else if (col1 == "frameRate")
+        {
+            tempframeRate = std::stoi(col2);
+        }
+        else
+        {
+            std::cerr << "Invalid setting: " << col1 << std::endl;
+            return 1;
+        }
+    }
+
+    configInFile.close(); // Close the file when done
+
+    // game settings
+    const bool draw = tempdraw;
+    const bool play = tempplay;
+    const int numAgents = tempnumAgents;
+    const float agentRadius = tempagentRadius;
+    const int maxRounds = tempmaxRounds;
+    
+    // physics settings
+    const b2Vec2 gravity(tempgravity.x, tempgravity.y);
+    const float timeStep = temptimeStep;
+    const int32 velocityIterations = tempvelocityIterations;
+    const int32 positionIterations = temppositionIterations;
+    const float density = tempdensity;
+
+    const float friction = tempfriction;
+    const float restitution = temprestitution;
+    const b2Vec2 startPosition(tempstartPosition.x, tempstartPosition.y);
+    const b2Vec2 startForce(tempstartForce.x, tempstartForce.y);
+    const float speedCap = tempspeedCap;
+    const float accelerationCap = tempaccelerationCap;
+    
+    // rendering settings
     const int SCALE = 30.0f;
-    const int window_x = 40.0f;
-    const int window_y = 30.0f;
-    const int frameRate = 120;
+    const int window_x = tempwindow_x;
+    const int window_y = tempwindow_y;
+    const int frameRate = tempframeRate;
+
+
+
 
     // game constants
     const unsigned char payoffMatrix[2][2][2] = {
@@ -98,10 +262,6 @@ int main()
     CreateWall(world, b2Vec2(0.0f, window_y), b2Vec2(window_x * 2, 1.0f));
     CreateWall(world, b2Vec2(window_x, 0.0f), b2Vec2(1.0f, window_y * 2));
 
-    // Colors
-    sf::Color fill[numAgents];
-    sf::Color outline[numAgents];
-
     // create agents
     b2Body *bodies[numAgents];
     for (int i = 0; i < numAgents; i++)
@@ -109,54 +269,155 @@ int main()
         bodies[i] = nullptr;
     } // initialize for later trickle effect
 
-    // create maneuvers
+    // initialize maneuvers
     std::vector<GameManeuver *> maneuvers;
-    char maneuverNames[numAgents];
-    for (int i = 0; i < numAgents; i++)
+    std::string maneuverNames[numAgents];
+
+    // initialize tactics
+    std::vector<GameTactic *> tactics;
+    std::string tacticNames[numAgents];
+
+    // read in the agents
+    std::ifstream agentInFile("../Configs/agents.csv");
+
+    // ignore the first line
+    std::getline(agentInFile, line);
+    // Read the file line by line
+    while (std::getline(agentInFile, line))
     {
-        switch (i % 2)
+        std::stringstream ss(line); // Convert line to a stream for further processing
+
+        // Split the line into comma-separated values
+        std::string col1, col2, col3;
+
+        // Get the values from the three columns
+        std::getline(ss, col1, ','); // Read first column
+        std::getline(ss, col2, ','); // Read second column
+        std::getline(ss, col3, ','); // Read third column
+
+        // next steps: convert col 1 to integer?, columns 2 and 3 will associate with an agent maneuver and tactic object type
+        // create the agent
+        int agent = std::stoi(col1);
+
+        // add maneuver to the vector
+        if (col2 == "Up")
         {
-        case 0:
-            maneuvers.push_back(new Chase());
-            maneuverNames[i] = 'c';
-            fill[i] = sf::Color::Magenta;
-            break;
-        case 1:
-            maneuvers.push_back(new Flee());
-            maneuverNames[i] = 'f';
-            fill[i] = sf::Color::Cyan;
-            break;
+            maneuvers.push_back(new Up());
         }
+        else if (col2 == "Down")
+        {
+            maneuvers.push_back(new Down());
+        }
+        else if (col2 == "Left")
+        {
+            maneuvers.push_back(new Left());
+        }
+        else if (col2 == "Right")
+        {
+            maneuvers.push_back(new Right());
+        }
+        else if (col2 == "Random")
+        {
+            maneuvers.push_back(new Random());
+        }
+        else if (col2 == "Still")
+        {
+            maneuvers.push_back(new Still());
+        }
+        else if (col2 == "Chase")
+        {
+            maneuvers.push_back(new Chase());
+        }
+        else if (col2 == "Flee")
+        {
+            maneuvers.push_back(new Flee());
+        }
+        else if (col2 == "WinChase")
+        {
+            maneuvers.push_back(new WinChase());
+        }
+        else if (col2 == "LossFlee")
+        {
+            maneuvers.push_back(new LossFlee());
+        }
+        else
+        {
+            std::cerr << "Invalid maneuver type: " << col2 << std::endl;
+            return 1;
+        }
+        maneuverNames[agent] = col2;
+
+        // add tactic to the vector
+        if (col3 == "Defect")
+        {
+            tactics.push_back(new Defect());
+        }
+        else if (col3 == "Cooperate")
+        {
+            tactics.push_back(new Cooperate());
+        }
+        else if (col3 == "TitForTat")
+        {
+            tactics.push_back(new TitForTat());
+        }
+        else if (col3 == "NaiveTitForTat")
+        {
+            tactics.push_back(new NaiveTitForTat());
+        }
+        else
+        {
+            std::cerr << "Invalid tactic type: " << col3 << std::endl;
+            return 1;
+        }
+        tacticNames[agent] = col3;
     }
 
-    // create tactics
-    std::vector<GameTactic *> tactics;
-    char tacticNames[numAgents];
-    for (int i = 0; i < numAgents; i++)
+    agentInFile.close(); // Close the file when done
+
+    // Colors
+    sf::Color fill[numAgents];
+    sf::Color outline[numAgents];
+
+    // read in the colors
+    std::ifstream colorInFile("../Configs/colors.csv");
+
+    // ignore the first line
+    std::getline(colorInFile, line);
+    // Read the file line by line
+    while (std::getline(colorInFile, line))
     {
-        switch (i % 3)
-        {
-        case 0:
-            tactics.push_back(new Defect());
-            tacticNames[i] = 'd';
-            outline[i] = sf::Color::Red;
-            break;
-        case 1:
-            tactics.push_back(new Cooperate());
-            tacticNames[i] = 'c';
-            outline[i] = sf::Color::Green;
-            break;
-        case 2:
-            tactics.push_back(new TitForTat());
-            tacticNames[i] = 't';
-            outline[i] = sf::Color::Blue;
-            break;
-        }
+        std::stringstream ss(line); // Convert line to a stream for further processing
+
+        // Split the line into comma-separated values
+        std::string col1, col2, col3, col4, col5, col6, col7;
+
+        // Get the values from the three columns
+        std::getline(ss, col1, ','); // Read first column
+        std::getline(ss, col2, ','); // Read second column
+        std::getline(ss, col3, ','); // Read third column
+        std::getline(ss, col4, ','); // Read fourth column
+        std::getline(ss, col5, ','); // Read fifth column
+        std::getline(ss, col6, ','); // Read sixth column
+        std::getline(ss, col7, ','); // Read seventh column
+
+        // next steps: convert columns to integers
+        //Agent,FillRed,FillGreen,FillBlue,OutlineRed,OutlineGreen,OutlineBlue
+        int agent = std::stoi(col1);
+        int fillRed = std::stoi(col2);
+        int fillGreen = std::stoi(col3);
+        int fillBlue = std::stoi(col4);
+        int outlineRed = std::stoi(col5);
+        int outlineGreen = std::stoi(col6);
+        int outlineBlue = std::stoi(col7);
+        
+        // add the colors
+        fill[agent] = sf::Color(std::stoi(col2), std::stoi(col3), std::stoi(col4));
+        outline[agent] = sf::Color(std::stoi(col5), std::stoi(col6), std::stoi(col7));
     }
 
     // create history
     std::unordered_map<uint64_t, uint8_t> history;
-    std::bitset<numAgents> games[numAgents] = {0}; // TODO: this gives me the ick but is necessary for tit for tat agents
+    std::vector<std::vector<bool>> games(numAgents, std::vector<bool>(numAgents, 0)); // Stores in the form of games[agent1][agent2]
 
     // game loop
     uint32_t round = 0;
@@ -192,8 +453,7 @@ int main()
 
             if (play == true && round > numAgents) // needed for the trickle effect to not bias results
             {
-
-                std::bitset<numAgents> collisions[numAgents] = {0}; // 0 means no collision, 1 means collision
+                std::vector<std::vector<bool>> collisions(numAgents, std::vector<bool>(numAgents, 0));
                 b2Contact *contact = world->GetContactList();       // Get the head of the contact list
 
                 while (contact != nullptr)
@@ -215,59 +475,37 @@ int main()
                         contact->GetWorldManifold(&worldManifold);
 
                         // tactic logic
-
                         // start by updating tit for tat
-                        if (tacticNames[id1] == 't')
+                        if (tacticNames[id1].compare("TitForTat") == 1)
                         {
-                            tactics[id1]->updateTactic(id2, games[id2][id1]);
+                            tactics[id1]->updateTactic(games[id1][id2]);
                         }
-                        if (tacticNames[id2] == 't')
+                        if (tacticNames[id1].compare("TitForTat") == 1)
                         {
-                            tactics[id2]->updateTactic(id1, games[id1][id2]);
+                            tactics[id1]->updateTactic(games[id2][id1]);
                         }
 
                         // this constitutes playing the game
-                        bool choice1 = tactics[id1]->doTactic(id2);
-                        bool choice2 = tactics[id2]->doTactic(id1);
+                        bool choice1 = tactics[id1]->doTactic();
+                        bool choice2 = tactics[id2]->doTactic();
 
                         // add the game for future tit for tat checks
-                        games[id1][id2] = choice2;
-                        games[id2][id1] = choice1;
+                        games[id1][id2] = choice1;
+                        games[id2][id1] = choice2;
 
-                        // update naive tit for tat
-                        if (tacticNames[id1] == 'n')
+                        if (tacticNames[id1].compare("NaiveTitForTat") == 1)
                         {
-                            tactics[id1]->updateTactic(id2, choice2);
+                            tactics[id1]->updateTactic(games[id1][id2]);
                         }
-                        if (tacticNames[id2] == 'n')
+                        if (tacticNames[id1].compare("NaiveTitForTat") == 1)
                         {
-                            tactics[id2]->updateTactic(id1, choice1);
+                            tactics[id1]->updateTactic(games[id2][id1]);
                         }
 
                         b2Vec2 contactPoint = worldManifold.points[0]; // I can do this because they are all circles
 
-                        if (maneuverNames[id1] == 'f' || maneuverNames[id1] == 'c')
-                        {
-                            maneuvers[id1]->updateManeuver(contactPoint, bodyA->GetPosition());
-                        };
-                        if (maneuverNames[id2] == 'f' || maneuverNames[id2] == 'c')
-                        {
-                            maneuvers[id2]->updateManeuver(contactPoint, bodyB->GetPosition());
-                        };
-                        if (maneuverNames[id1] == 'w' || maneuverNames[id1] == 'l')
-                        {
-                            if (choice1 == 1 && choice2 == 0 || choice1 == 0 && choice2 == 0)
-                            {
-                                maneuvers[id1]->updateManeuver(contactPoint, bodyA->GetPosition());
-                            }
-                        };
-                        if (maneuverNames[id2] == 'W' || maneuverNames[id2] == 'L')
-                        {
-                            if (choice1 == 0 && choice2 == 1 || choice1 == 0 && choice2 == 0)
-                            {
-                                maneuvers[id2]->updateManeuver(contactPoint, bodyB->GetPosition());
-                            }
-                        };
+                        maneuvers[id1]->updateManeuver(contactPoint, bodyA->GetPosition());
+                        maneuvers[id2]->updateManeuver(contactPoint, bodyB->GetPosition());
                         // update the history
                         // to save memory, we garuntee agent1 < agent2
                         if (id1 > id2)
@@ -288,45 +526,16 @@ int main()
                     contact = contact->GetNext();
                 }
 
+                // do the maneuvers
                 for (int i = 0; i < numAgents; i++) // going to test agents moving each round first
                 {
                     b2Vec2 force = maneuvers[i]->doManeuver();
 
                     // Acceleration cap
-                    if (force.x > accelerationCap)
-                    {
-                        force.x = accelerationCap;
-                    }
-                    if (force.y > accelerationCap)
-                    {
-                        force.y = accelerationCap;
-                    }
-                    if (force.x < -accelerationCap)
-                    {
-                        force.x = -accelerationCap;
-                    }
-                    if (force.y < -accelerationCap)
-                    {
-                        force.y = -accelerationCap;
-                    }
+                    force = ApplyAccelerationCap(force, accelerationCap);
 
                     // Speed cap
-                    if (bodies[i]->GetLinearVelocity().x > speedCap)
-                    {
-                        bodies[i]->SetLinearVelocity(b2Vec2(speedCap, bodies[i]->GetLinearVelocity().y));
-                    }
-                    if (bodies[i]->GetLinearVelocity().y > speedCap)
-                    {
-                        bodies[i]->SetLinearVelocity(b2Vec2(bodies[i]->GetLinearVelocity().x, speedCap));
-                    }
-                    if (bodies[i]->GetLinearVelocity().x < -speedCap)
-                    {
-                        bodies[i]->SetLinearVelocity(b2Vec2(-speedCap, bodies[i]->GetLinearVelocity().y));
-                    }
-                    if (bodies[i]->GetLinearVelocity().y < -speedCap)
-                    {
-                        bodies[i]->SetLinearVelocity(b2Vec2(bodies[i]->GetLinearVelocity().x, -speedCap));
-                    }
+                    bodies[i]->SetLinearVelocity(ApplySpeedCap(bodies[i]->GetLinearVelocity(), speedCap));
 
                     bodies[i]->ApplyLinearImpulse(force, bodies[i]->GetWorldCenter(), true);
                 }
@@ -357,7 +566,8 @@ int main()
                 }
                 window.display();
             }
-                    round++;
+
+            round++;
         }
     }
 
@@ -386,7 +596,7 @@ int main()
     std::ofstream gameFile(gamedata);
 
     // write the history
-    historyFile << "Key, Value" << std::endl;
+    historyFile << "Key,Value" << std::endl;
     for (const auto &pair : history)
     {
         historyFile << pair.first << "," << (int)pair.second << std::endl;
@@ -405,16 +615,19 @@ int main()
     gameFile << "play, " << play << std::endl;
     gameFile << "numAgents, " << numAgents << std::endl;
     gameFile << "agentRadius, " << agentRadius << std::endl;
-    gameFile << "maxrounds," << maxRounds <<std::endl;
-    gameFile << "gravity, " << gravity.x << "," << gravity.y << std::endl;
+    gameFile << "maxrounds," << maxRounds << std::endl;
+    gameFile << "gravityX, " << gravity.x << std::endl;
+    gameFile << "gravityY, " << gravity.y << std::endl;
     gameFile << "timeStep, " << timeStep << std::endl;
     gameFile << "velocityIterations, " << velocityIterations << std::endl;
     gameFile << "positionIterations, " << positionIterations << std::endl;
     gameFile << "density, " << density << std::endl;
     gameFile << "friction, " << friction << std::endl;
     gameFile << "restitution, " << restitution << std::endl;
-    gameFile << "startPosition, " << startPosition.x << "," << startPosition.y << std::endl;
-    gameFile << "starForce, " << startForce.x << "," << startForce.y << std::endl;
+    gameFile << "startPositionX, " << startPosition.x << std::endl;
+    gameFile << "startPositionY, " << startPosition.y << std::endl;
+    gameFile << "startForceX, " << startForce.x << std::endl;
+    gameFile << "startForceY, " << startForce.y << std::endl;
     gameFile << "speedCap, " << speedCap << std::endl;
     gameFile << "accelerationCap, " << accelerationCap << std::endl;
     gameFile << "SCALE, " << SCALE << std::endl;
