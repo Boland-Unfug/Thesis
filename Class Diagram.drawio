@@ -212,7 +212,7 @@
         <mxCell id="YXluAZz4ZXNDA7GaeiT3-3" value="Agents is a file that stores each agents tactic and maneuver" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;" vertex="1" parent="1">
           <mxGeometry x="480" y="-600" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="YXluAZz4ZXNDA7GaeiT3-13" value="The agent is made up of the physics body,, a tactic, a maneuver, and the fill and outline colors" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;" vertex="1" parent="1">
+        <mxCell id="YXluAZz4ZXNDA7GaeiT3-13" value="The agent is made up of the physics body, a tactic, a maneuver, and the fill and outline colors" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;" vertex="1" parent="1">
           <mxGeometry x="850" y="-600" width="120" height="110" as="geometry" />
         </mxCell>
       </root>
